@@ -1408,7 +1408,7 @@ class stickerController extends sticker
 		return $output;
 	}
 
-	function insertStickerLog($obj, $sequence){
+	function insertStickerLog($obj, $sequence = false){
 		$logged_info = Context::get('logged_info');
 		$idx = $sequence ? $sequence : getNextSequence();
 		$sticker_srl = $obj->sticker_srl ? $obj->sticker_srl : 0;
