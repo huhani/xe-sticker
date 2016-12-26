@@ -1,0 +1,29 @@
+<query id="updateStickerAdmin" action="update">
+	<tables>
+		<table name="sticker" />
+	</tables>
+	<columns>
+		<column name="category_srl" var="category_srl" filter="number" />
+		<column name="title" var="title" notnull="notnull" />
+		<column name="tag" var="tag" minlength="1" maxlength="300" />
+		<column name="content" var="content" notnull="notnull" />
+
+		<column name="readed_count" var="readed_count" filter="number" />
+		<column name="bought_count" var="bought_count" filter="number" />
+		<column name="used_count" var="used_count" filter="number" />
+
+		<column name="start_date" default="null" var="start_date" filter="number" />
+		<column name="end_date" default="null" var="end_date" filter="number" />
+		<column name="buy_limit" var="buy_limit" filter="number" />
+		<column name="exptime" var="exptime" default="null" filter="number" />
+
+		<column name="price" var="price" filter="number" notnull="notnull" />
+		<column name="last_update" var="last_update" filter="number" />
+		<column name="last_updater" var="last_updater" />
+		<column name="list_order" var="list_order" notnull="notnull" />
+		<column name="status" var="status" notnull="notnull" />
+	</columns>
+	<conditions>
+		<condition operation="equal" column="sticker_srl" var="sticker_srl" filter="number" notnull="notnull" />
+	</conditions>
+</query>

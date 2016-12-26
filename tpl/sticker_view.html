@@ -1,0 +1,303 @@
+<!--// HEADER -->
+<load target="../../../common/js/plugins/ui/jquery-ui.min.css" />
+<load target="../../../common/js/plugins/ui/jquery-ui.js" />
+
+<style>
+
+.sticker_file_info{
+	display: inline-block;
+}
+
+.sticker_file_info>img{
+	width:150px;
+	height:150px;
+	object-fit:cover;
+	margin:0 10px 8px 0;
+	border-radius:3px;
+}
+
+.sticker_file_info tbody>tr:nth-child(odd)>td, .sticker_file_info tbody>tr:nth-child(odd)>th {
+    background-color: #FFF;
+}
+
+
+.sticker_file_info>table>tbody>tr:nth-child(even)>td, .sticker_file_info>table>tbody>tr:nth-child(even)>th {
+    background-color: #FFF;
+}
+
+</style>
+
+
+
+<include target="_header.html" />
+
+<!--TODO-->
+<div cond="$XE_VALIDATOR_MESSAGE && $XE_VALIDATOR_ID == ''" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+	<p>{$XE_VALIDATOR_MESSAGE}</p>
+</div>
+
+<h2>스티커 정보</h2>
+
+<form action="./" method="post" style="margin:0 0 25px 0;">
+<input type="hidden" name="module" value="{$module}">
+<input type="hidden" name="act" value="procStickerAdminUpdate">
+<input type="hidden" name="sticker_srl" value="{$oSticker->sticker_srl}">
+<input type="hidden" name="content" value="{$oSticker->sticker_editor}">
+
+<table class="x_table x_table-striped x_table-hover" style="margin:0 0 15px 0;">
+<colgroup><col width="120">
+</colgroup><tbody><tr>
+<th scope="col" class="nowr">닉네임</th>
+<td><a href="#popup_menu_area" class="member_{$oSticker->member_srl}" onclick="return false">{$oSticker->nick_name}</a>
+</td>
+</tr>
+<tr>
+	<th scope="col" class="nowr">스티커 번호</th>
+	<td><a href="{getUrl('','mid', 'sticker', 'sticker_srl', $oSticker->sticker_srl)}" target="_blank">{$oSticker->sticker_srl}</a></td>
+</tr>
+<tr>
+	<th scope="col" class="nowr">제목</th>
+	<td><input type="text" name="title" id="title" value="{$oSticker->title}" style="width:50%;" /></td>
+</tr>
+<tr>
+	<th scope="col" class="nowr">등록일</th>
+	<td>{zdate($oSticker->regdate, 'Y-m-d H:i:s')}</td>
+</tr>
+<tr cond="$oSticker->last_update && $oSticker->regdate != $oSticker->last_update">
+	<th scope="col" class="nowr">마지막 수정</th>
+	<td>{zdate($oSticker->last_update, 'Y-m-d H:i:s')}</td>
+</tr>
+<tr>
+	<th scope="col" class="nowr">IP 주소</th>
+	<td>{$oSticker->ipaddress}</td>
+</tr>
+<tr>
+	<th scope="col" class="nowr">판매 시작일</th>
+	<td>
+		<input type="hidden" name="start_date" id="start_date" value="{$oSticker->start_date ? zdate($oSticker->start_date, 'Ymd') : ''}" />
+		<input type="text" readonly placeholder="YYYY-MM-DD" class="inputDate" id="until_s" value="{$oSticker->start_date ? zdate($oSticker->start_date, 'Y-m-d') : ''}" />
+		<input type="button" value="삭제" class="x_btn dateRemover" />
+
+		<div style="margin: 10px 0 0 0">
+			<label class="x_inline" for="start_hour">
+			<input type="number" value="{$oSticker->start_date ? zdate($oSticker->start_date, 'H') : '0'}" name="start_hour" id="start_hour"> 시</label>
+
+			<label class="x_inline" for="start_minute">
+			<input type="number" value="{$oSticker->start_date ? zdate($oSticker->start_date, 'i') : '0'}" name="start_minute" id="start_minute"> 분</label>
+
+			<label class="x_inline" for="start_second">
+			<input type="number" value="{$oSticker->start_date ? zdate($oSticker->start_date, 's') : '0'}" name="start_second" id="start_second"> 초</label>
+		</div>
+		<!--@if($oSticker->start_date)-->
+			{zdate($oSticker->start_date, 'Y-m-d H:i:s')}
+		<!--@else-->
+			시작일이 설정되지 않았습니다.
+		<!--@end-->
+	</td>
+</tr>
+<tr>
+	<th scope="col" class="nowr">판매 종료일</th>
+	<td>
+		<input type="hidden" name="end_date" id="end_date" value="{$oSticker->end_date ? zdate($oSticker->end_date, 'Ymd') : ''}" />
+		<input type="text" readonly placeholder="YYYY-MM-DD" class="inputDate" id="until_e" value="{$oSticker->end_date ? zdate($oSticker->end_date, 'Y-m-d') : ''}" />
+		<input type="button" value="삭제" class="x_btn dateRemover" />
+
+		<div style="margin: 10px 0 0 0">
+			<label class="x_inline" for="end_hour">
+			<input type="number" value="{$oSticker->end_date ? zdate($oSticker->end_date, 'H') : '23'}" name="end_hour" id="end_hour"> 시</label>
+
+			<label class="x_inline" for="end_minute">
+			<input type="number" value="{$oSticker->end_date ? zdate($oSticker->end_date, 'i') : '59'}" name="end_minute" id="end_minute"> 분</label>
+
+			<label class="x_inline" for="end_second">
+			<input type="number" value="{$oSticker->end_date ? zdate($oSticker->end_date, 's') : '59'}" name="end_second" id="end_second"> 초</label>
+		</div>
+		<!--@if($oSticker->end_date)-->
+			{zdate($oSticker->end_date, 'Y-m-d H:i:s')}
+		<!--@else-->
+			종료일이 설정되지 않았습니다.
+		<!--@end-->
+	</td>
+</tr>
+<tr>
+	<th scope="col" class="nowr">사용 기간</th>
+	<td>
+			<input type="number" value="{$oSticker->exptime ? $oSticker->exptime : '0'}" name="exptime" id="exptime" style="width:70px;"> 시간 <span>(0: 무기한)</span>
+	</td>
+</tr>
+<tr>
+	<th scope="col" class="nowr">가격</th>
+	<td>
+		<!--@if($oSticker->price === 0)-->
+			<input type="number" value="{$oSticker->price}" name="price" id="price" style="width:70px;">
+		<!--@else-->
+			<input type="number" value="{$oSticker->price}" name="price" id="price" style="width:70px;">
+		<!--@end-->
+		<span>point</span>
+	</td>
+</tr>
+<tr>
+	<th scope="col" class="nowr">구매수/최대 판매수</th>
+	<td>
+		<input type="number" value="{$oSticker->bought_count}" name="bought_count" id="bought_count" style="width:70px;">	
+		<label class="x_inline" for="bought_count_e" style="margin: 0 4px 0 4px;">
+			수정
+			<input type="checkbox" value="Y" id="bought_count_e" name="bought_count_e">
+		</label>
+		<span> / </span>
+		<input type="number" value="{$oSticker->buy_limit}" name="buy_limit" id="buy_limit" style="width:70px;"> (0: 무제한)
+	</td>
+</tr>
+<tr>
+	<th scope="col" class="nowr">사용 횟수</th>
+	<td>
+		<input type="number" value="{$oSticker->used_count}" name="used_count" id="used_count" style="width:70px;">
+		<label class="x_inline" for="used_count_e" style="margin: 0 0 0 4px;">
+			수정
+			<input type="checkbox" value="Y" id="used_count_e" name="used_count_e">
+		</label>
+	</td>
+</tr>
+<tr>
+	<th scope="col" class="nowr">조회 수</th>
+	<td>
+		<input type="number" value="{$oSticker->readed_count}" name="readed_count" id="readed_count" style="width:70px;">
+		<label class="x_inline" for="readed_count_e" style="margin: 0 0 0 4px;">
+			수정
+			<input type="checkbox" value="Y" id="readed_count_e" name="readed_count_e">
+		</label>
+	</td>
+</tr>
+<tr>
+	<th scope="col" class="nowr">태그</th>
+	<td><textarea name="tag" placeholder="250자 이내의 태그를 입력하세요." style="width:50%; height:50px;">{htmlspecialchars($oSticker->tag)}</textarea></td>
+</tr>
+<tr>
+	<th scope="col" class="nowr">상태</th>
+	<td>
+		<label class="x_inline" for="status_public">
+			<input type="radio" id="status_public" name="status" value="PUBLIC" checked="checked"|cond="$oSticker->status == 'PUBLIC'"> 공개
+		</label>
+		<label class="x_inline" for="status_check">
+			<input type="radio" id="status_check" name="status" value="CHECK" checked="checked"|cond="$oSticker->status == 'CHECK'"> 검토
+		</label>
+		<label class="x_inline" for="status_pause">
+			<input type="radio" id="status_pause" name="status" value="PAUSE" checked="checked"|cond="$oSticker->status == 'PAUSE'"> 판매 중단
+		</label>
+		<label class="x_inline" for="status_stop">
+			<input type="radio" id="status_stop" name="status" value="STOP" checked="checked"|cond="$oSticker->status == 'STOP'"> 정지
+		</label>
+	</td>
+</tr>
+<tr>
+	<th scope="col" class="nowr">내용</th>
+	<td>{$editor}</td>
+</tr>
+
+</tbody>
+</table>
+
+<div class="x_pull-left">
+	<button class="x_btn" type="button" onclick="history.go(-1)">목록</button>
+</div>
+<div class="x_pull-right">
+	<button type="submit" name="act" class="x_btn" value="procStickerAdminDelete">삭제</button>
+	<button type="submit" class="x_btn x_btn-primary" style="width:120px;" value="false">수정</button>
+</div>
+
+</form>
+<BR>
+
+<h2>파일 정보</h2>
+<table class="x_table">
+<colgroup>
+<col width="120">
+</colgroup>
+	<tbody>
+	<tr loop="$oStickerImage => $no, $oStickerFile">
+		<th scope="col" class="nowr">
+			<!--@if($oStickerFile->no == 0)-->
+				MAIN
+			<!--@else-->
+				NO {$oStickerFile->no}
+			<!--@end-->
+		</th>
+		<td>
+			<div class="sticker_file_info" cond="$oStickerFile->file_info" style="float:left;">
+				<img src="{$oStickerFile->url}">
+			</div>
+			<div class="sticker_file_info">
+				<table>
+					<tr>
+						<th scope="col" class="nowr">스티커 파일 고유번호</th>
+						<td>{$oStickerFile->sticker_file_srl}</td>
+					</tr>
+					<tr>
+						<th scope="col" class="nowr">파일 고유번호</th>
+						<td>{$oStickerFile->file_srl}</td>
+					</tr>
+					<tr>
+						<th scope="col" class="nowr">파일 이름</th>
+						<td>
+							<!--@if($oStickerFile->file_info)-->
+							<a href="{htmlspecialchars_decode($oStickerFile->file_info->download_url)}">{htmlspecialchars($oStickerFile->file_name, ENT_COMPAT | ENT_HTML401, 'UTF-8', false)}</a> ({$oStickerFile->file_info->download_count})
+							<!--@else-->
+							<span> (존재하지 않는 파일입니다)</span>
+							<!--@end-->
+						</td>
+					</tr>
+					<!--@if($oStickerFile->file_info)-->
+					<tr>
+						<th scope="col" class="nowr">파일 크기</th>
+						<td>{FileHandler::filesize($oStickerFile->file_info->file_size)}</td>
+					</tr>
+					<tr>
+						<th scope="col" class="nowr">등록자 IP</th>
+						<td>{$oStickerFile->file_info->ipaddress}</td>
+					</tr>
+					<!--@endif-->
+					<tr>
+						<th scope="col" class="nowr">위치</th>
+						<td><a href="{$oStickerFile->url}" target="_blink">{$oStickerFile->url}</a></td>
+					</tr>
+					<tr>
+						<th scope="col" class="nowr">스티커 파일 등록일</th>
+						<td>{zdate($oStickerFile->regdate,"Y.m.d H:i:s")}<!--@if($oStickerFile->file_info)--> ({zdate($oStickerFile->file_info->regdate,"Y.m.d H:i:s")})<!--@endif--></td>
+					</tr>
+					<tr>
+						<th scope="col" class="nowr">사용 횟수</th>
+						<td>{$oStickerFile->used_count}</td>
+					</tr>
+				</table>
+			</div>
+		</td>
+	</tr>
+	</tbody>
+</table>
+
+<form action="./" method="post">
+	<input type="hidden" name="module" value="{$module}">
+	<input type="hidden" name="act" value="procStickerAdminDelete">
+	<input type="hidden" name="sticker_srl" value="{$oSticker->sticker_srl}">
+	<div class="x_pull-left"><button class="x_btn" type="button" onclick="history.go(-1)">목록</button></div>
+	<div class="x_pull-right">
+	<button type="submit" name="is_all" class="x_btn" value="false">삭제</button>
+	</div>
+</form>
+
+<script>
+(function($){
+	$(function(){
+		var option = { changeMonth: true, changeYear: true, gotoCurrent: false,yearRange:'-100:+10', dateFormat:'yy-mm-dd', onSelect:function(){
+			$(this).prev('input[type="hidden"]').val(this.value.replace(/-/g,""))}
+		};
+		$.extend(option,$.datepicker.regional['{$lang_type}']);
+		$(".inputDate").datepicker(option);
+		$(".dateRemover").click(function() {
+			$(this).prevAll('input').val('');
+			$(this).parent().find('div input').val('0');
+			return false;
+		});
+    });
+})(jQuery);
+</script>

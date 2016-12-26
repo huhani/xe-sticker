@@ -1,0 +1,12 @@
+<table name="sticker_buy">
+	<column name="idx" type="number" size="11" notnull="notnull" primary_key="primary_key" />
+	<column name="member_srl" type="number" size="11" notnull="notnull" index="idx_member_srl" />
+	<column name="sticker_srl" type="number" size="11" notnull="notnull" index="idx_sticker_srl" />
+	<column name="use_point" type="number" default="0" size="11" notnull="notnull" />
+	<column name="option" type="char" size="1" default="N" notnull="notnull" />
+	<column name="used_count" type="number" size="11" default="0" notnull="notnull" index="idx_used_count" />
+	<column name="expdate" type="date" />
+	<column name="ipaddress" type="varchar" size="128" notnull="notnull" index="idx_ipaddress" />
+	<column name="list_order" type="number" size="11" notnull="notnull" />
+	<column name="regdate" notnull="notnull" type="date" />
+</table>

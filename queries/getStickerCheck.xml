@@ -1,0 +1,11 @@
+<query id="getStickerCheck" action="select">
+	<tables>
+		<table name="sticker" />
+	</tables>
+	<columns>
+      <column name="count(*)" alias="count" />
+	</columns>
+	<conditions>
+		<condition operation="equal" column="sticker_srl" var="sticker_srl" />
+	</conditions>
+</query>

@@ -1,0 +1,28 @@
+<query id="getStickerBuyList" action="select">
+	<tables>
+		<table name="sticker_buy" />
+	</tables>
+	<columns>
+		<column name="*" />
+	</columns>
+	<conditions>
+		<condition operation="equal" column="sticker_srl" var="s_sticker_srl" filter="number" pipe="and" />
+		<condition operation="equal" column="member_srl" var="s_member_srl" filter="number" pipe="and" />
+		<group pipe="and">
+			<condition operation="more" column="expdate" var="active" pipe="or" />
+			<condition operation="less" column="expdate" var="inactive" pipe="or" />
+			<condition operation="equal" column="option" var="s_option" pipe="or" />
+			<condition operation="equal" column="use_point" var="s_use_point" pipe="or" />
+			<condition operation="like_prefix" column="expdate" var="s_expdate" pipe="or" />
+			<condition operation="like_prefix" column="regdate" var="s_regdate" pipe="or" />
+			<condition operation="like_prefix" column="last_update" var="s_last_update" pipe="or" />
+			<condition operation="like_prefix" column="ipaddress" var="s_ipaddress" pipe="or" />
+		</group>
+	</conditions>
+	<navigation>
+		<index var="sort_index" default="regdate" order="order_type" />
+		<list_count var="list_count" default="20" />
+		<page_count var="page_count" default="10" />
+		<page var="page" default="1" />
+	</navigation>
+</query>

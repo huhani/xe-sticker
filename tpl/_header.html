@@ -1,0 +1,35 @@
+<div class="x_page-header">
+	<h1>
+		{$lang->sticker}
+	</h1>
+</div>
+
+<ul class="x_nav x_nav-tabs">
+	<li class="x_active"|cond="$act == 'dispStickerAdminStickerList' || $act == 'dispStickerAdminStickerView'">
+		<a href="{getUrl('', 'module', 'admin', 'act', 'dispStickerAdminStickerList')}">스티커 목록</a>
+	</li>
+	<li class="x_active"|cond="$act == 'dispStickerAdminBuyList' || $act == 'dispStickerAdminBuyInfo'">
+		<a href="{getUrl('', 'module', 'admin', 'act', 'dispStickerAdminBuyList')}">구매 목록</a>
+	</li>
+	<li class="x_active"|cond="$act == 'dispStickerAdminConfig'">
+		<a href="{getUrl('', 'module', 'admin', 'act', 'dispStickerAdminConfig')}">모듈</a>
+	</li>
+	<li class="x_active"|cond="$act == 'dispStickerAdminCategoryInfo'" style="display:none;">
+		<a href="{getUrl('', 'module', 'admin', 'act', 'dispStickerAdminCategoryInfo')}">분류 관리</a>
+	</li>
+	<li class="x_active"|cond="$act == 'dispStickerAdminGrantInfo'">
+		<a href="{getUrl('', 'module', 'admin', 'act', 'dispStickerAdminGrantInfo')}">권한 관리</a>
+	</li>
+	<li class="x_active"|cond="$act == 'dispStickerAdminLogList'">
+		<a href="{getUrl('', 'module', 'admin', 'act', 'dispStickerAdminLogList')}">로그</a>
+	</li>
+	<li class="x_active"|cond="$act == 'dispStickerAdminDesign'">
+		<a href="{getUrl('', 'module', 'admin', 'act', 'dispStickerAdminDesign')}">디자인</a>
+	</li>
+	<li class="x_active"|cond="$act == 'dispStickerAdminSkinInfo'">
+		<a href="{getUrl('', 'module', 'admin', 'act', 'dispStickerAdminSkinInfo')}">스킨 설정</a>
+	</li>
+	<li class="x_active"|cond="$act == 'dispStickerAdminMobileSkinInfo'">
+		<a href="{getUrl('', 'module', 'admin', 'act', 'dispStickerAdminMobileSkinInfo')}">모바일 스킨 설정</a>
+	</li>
+</ul>

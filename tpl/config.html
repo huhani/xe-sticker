@@ -1,0 +1,497 @@
+<include target="_header.html" />
+
+<!--TODO-->
+<div cond="$XE_VALIDATOR_MESSAGE && $XE_VALIDATOR_ID == ''" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+	<p>{$XE_VALIDATOR_MESSAGE}</p>
+</div>
+
+<form method="post" class="x_form-horizontal">
+	<input type="hidden" name="module" value="sticker">
+	<input type="hidden" name="act" value="procStickerAdminConfig">
+	<input type="hidden" name="success_return_url" value="{getUrl('', 'module', 'admin', 'act', 'dispStickerAdminConfig')}">
+
+	<section class="section">
+	<h1>{$lang->stkr_default_config}<button type="button" class="snToggle x_icon-chevron-up">Toggle this section</button></h1>
+		<div class="x_control-group">
+			<label class="x_control-label">{$lang->stkr_use_module}</label>
+			<div class="x_controls">
+				<label class="x_inline" for="stkr_use">
+				<input type="radio" id="stkr_use" name="use" value="Y" checked="checked"|cond="$config->use == 'Y'">{$lang->use}</label>
+
+				<label class="x_inline" for="stkr_not_use">
+				<input type="radio" id="stkr_not_use" name="use" value="N" checked="checked"|cond="$config->use == 'N'">{$lang->not_use}</label>
+				<a href="#use_module_help" class="x_icon-question-sign" data-toggle="#use_module_help">{$lang->help}</a>
+				<p id="use_module_help" class="x_help-block" hidden="hidden">{$lang->cmd_use_module}</p>
+			</div>
+		</div>
+
+
+
+		<div class="x_control-group">
+			<label class="x_control-label">{$lang->stkr_add_member_menu}</label>
+			<div class="x_controls">
+				<label class="x_inline" for="add_member_menu_use">
+				<input type="radio" id="add_member_menu_use" name="add_member_menu" value="Y" checked="checked"|cond="$config->add_member_menu == 'Y'">{$lang->use}</label>
+
+				<label class="x_inline" for="add_member_menu_not_use">
+				<input type="radio" id="add_member_menu_not_use" name="add_member_menu" value="N" checked="checked"|cond="$config->add_member_menu == 'N'">{$lang->not_use}</label>
+				<a href="#add_member_menu_help" class="x_icon-question-sign" data-toggle="#add_member_menu_help">{$lang->help}</a>
+				<p id="add_member_menu_help" class="x_help-block" hidden="hidden">{$lang->cmd_add_member_menu}</p>
+			</div>
+		</div>
+
+		<div class="x_control-group">
+			<label for="browser_title" class="x_control-label">{$lang->stkr_browser_title}</label>
+			<div class="x_controls">
+				<input type="text" name="browser_title" id="browser_title" value="{$module_info->browser_title}">
+				<a href="#browser_title_help" class="x_icon-question-sign" data-toggle="#browser_title_help">{$lang->help}</a>
+				<p id="browser_title_help" class="x_help-block" hidden="hidden">{$lang->cmd_browser_title}</p>
+			</div>
+		</div>
+
+		<div class="x_control-group">
+			<label for="default_sticker" class="x_control-label">{$lang->stkr_default_sticker}</label>
+			<div class="x_controls">
+				<input type="text" name="default_sticker" id="default_sticker" value="{$config->default_sticker}">
+				<a href="#default_sticker_help" class="x_icon-question-sign" data-toggle="#default_sticker_help">{$lang->help}</a>
+				<p id="default_sticker_help" class="x_help-block" hidden="hidden">{$lang->cmd_default_sticker}</p>
+			</div>
+		</div>
+
+		<div class="x_control-group">
+			<label for="deleted_sticker" class="x_control-label">{$lang->stkr_deleted_sticker}</label>
+			<div class="x_controls">
+				<textarea name="deleted_sticker" id="deleted_sticker" style="width:300px;height:80px">{$config->deleted_sticker}</textarea>
+				<a href="#deleted_sticker_help" class="x_icon-question-sign" data-toggle="#deleted_sticker_help">{$lang->help}</a>
+				<p id="deleted_sticker_help" class="x_help-block" hidden="hidden">{$lang->cmd_deleted_sticker}</p>
+			</div>
+		</div>
+
+		<div class="x_control-group">
+			<label for="buy_limit" class="x_control-label">{$lang->stkr_buy_limit}</label>
+			<div class="x_controls">
+				<label class="x_inline" for="buy_limit">
+				<input type="number" value="{$config->buy_limit}" name="buy_limit" id="buy_limit"></label>
+				<a href="#buy_limit_help" class="x_icon-question-sign" data-toggle="#buy_limit_help">{$lang->help}</a>
+				<p id="buy_limit_help" class="x_help-block" hidden="hidden">{$lang->cmd_buy_limit}</p>
+			</div>
+		</div>
+
+	</section>
+
+
+	<section class="section">
+		<h1>{$lang->stkr_sticker_upload}<button type="button" class="snToggle x_icon-chevron-up">Toggle this section</button></h1>
+
+		<div class="x_control-group">
+			<label class="x_control-label">{$lang->stkr_before_test}</label>
+			<div class="x_controls">
+				<label class="x_inline" for="before_test_use">
+				<input type="radio" id="before_test_use" name="before_test" value="Y" checked="checked"|cond="$config->before_test == 'Y'">{$lang->use}</label>
+
+				<label class="x_inline" for="before_test_not_use">
+				<input type="radio" id="before_test_not_use" name="before_test" value="N" checked="checked"|cond="$config->before_test == 'N'">{$lang->not_use}</label>
+				<a href="#before_test_help" class="x_icon-question-sign" data-toggle="#before_test_help">{$lang->help}</a>
+				<p id="before_test_help" class="x_help-block" hidden="hidden">{$lang->cmd_before_test}</p>
+			</div>
+		</div>
+
+		<div class="x_control-group">
+			<label class="x_control-label">{$lang->stkr_limit_point}</label>
+			<div class="x_controls">
+				<label class="x_inline" for="min_point">
+				{$lang->cmd_min} : 
+				<input type="number" value="{$config->minPoint}" name="minPoint" id="min_point"></label>
+				<label class="x_inline" for="max_point">
+				{$lang->cmd_max} : 
+				<input type="number" value="{$config->maxPoint}" name="maxPoint" id="max_point"></label>
+				<a href="#limit_point_help" class="x_icon-question-sign" data-toggle="#limit_point_help">{$lang->help}</a>
+				<p id="limit_point_help" class="x_help-block" hidden="hidden">{$lang->cmd_limit_point}</p>
+			</div>
+		</div>
+
+		<div class="x_control-group">
+			<label for="return_point" class="x_control-label">{$lang->stkr_return_point}</label>
+			<div class="x_controls">
+				<label class="x_inline" for="return_point">
+				<input type="number" value="{$config->returnPoint}" name="returnPoint" id="return_point" style="width:50px;"><span style="margin:0 0 0 15px">%  </span></label>
+				<a href="#return_point_help" class="x_icon-question-sign" data-toggle="#return_point_help">{$lang->help}</a>
+				<p id="return_point_help" class="x_help-block" hidden="hidden">{$lang->cmd_return_point}</p>
+			</div>
+		</div>
+
+		<div class="x_control-group">
+			<label for="upload_charge" class="x_control-label">{$lang->stkr_upload_charge}</label>
+			<div class="x_controls">
+				<label class="x_inline" for="upload_charge">
+				<input type="number" value="{$config->upload_charge}" name="upload_charge" id="upload_charge" style="width:50px;"><span style="margin:0 0 0 15px">point  </span></label>
+				<a href="#upload_charge_help" class="x_icon-question-sign" data-toggle="#upload_charge_help">{$lang->help}</a>
+				<p id="upload_charge_help" class="x_help-block" hidden="hidden">{$lang->cmd_upload_charge}</p>
+			</div>
+		</div>
+
+		<div class="x_control-group">
+			<label for="sale_end_date" class="x_control-label">{$lang->stkr_sale_end_date}</label>
+			<div class="x_controls">
+				<label class="x_inline" for="sale_end_date">
+				<input type="number" value="{$config->sale_end_date}" name="sale_end_date" id="sale_end_date" style="width:50px;"><span style="margin:0 0 0 15px">일  </span></label>
+				<a href="#sale_end_date_help" class="x_icon-question-sign" data-toggle="#sale_end_date_help">{$lang->help}</a>
+				<p id="sale_end_date_help" class="x_help-block" hidden="hidden">{$lang->cmd_sale_end_date}</p>
+			</div>
+		</div>
+
+		<div class="x_control-group">
+			<label for="use_date" class="x_control-label">{$lang->stkr_use_date}</label>
+			<div class="x_controls">
+				<label class="x_inline" for="use_date">
+				<input type="number" value="{$config->use_date}" name="use_date" id="use_date" style="width:50px;"><span style="margin:0 0 0 15px">시간  </span></label>
+				<a href="#use_date_help" class="x_icon-question-sign" data-toggle="#use_date_help">{$lang->help}</a>
+				<p id="use_date_help" class="x_help-block" hidden="hidden">{$lang->cmd_use_date}</p>
+			</div>
+		</div>
+
+		<div class="x_control-group">
+			<label for="sale_limit" class="x_control-label">{$lang->stkr_sale_limit}</label>
+			<div class="x_controls">
+				<label class="x_inline" for="sale_limit">
+				<input type="number" value="{$config->sale_limit}" name="sale_limit" id="sale_limit" style="width:50px;"><span style="margin:0 0 0 15px">개 </span></label>
+				<a href="#sale_limit_help" class="x_icon-question-sign" data-toggle="#sale_limit_help">{$lang->help}</a>
+				<p id="sale_limit_help" class="x_help-block" hidden="hidden">{$lang->cmd_sale_limit}</p>
+			</div>
+		</div>
+
+	</section>
+
+	<section class="section">
+		<h1>{$lang->stkr_sticker_modify}<button type="button" class="snToggle x_icon-chevron-up">Toggle this section</button></h1>
+		<div class="x_control-group">
+			<label class="x_control-label">{$lang->stkr_public}</label>
+			<div class="x_controls">
+				<label class="x_inline" for="public_modify_allow">
+				<input type="radio" id="public_modify_allow" name="public_modify" value="Y" checked="checked"|cond="$config->public_modify == 'Y'">{$lang->allow}</label>
+
+				<label class="x_inline" for="public_modify_not_allow">
+				<input type="radio" id="public_modify_not_allow" name="public_modify" value="N" checked="checked"|cond="$config->public_modify == 'N'">{$lang->not_allow}</label>
+				<a href="#public_modify_help" class="x_icon-question-sign" data-toggle="#public_modify_help">{$lang->help}</a>
+				<p id="public_modify_help" class="x_help-block" hidden="hidden">{$lang->cmd_public_modify}</p>
+			</div>
+		</div>
+
+		<div class="x_control-group">
+			<label class="x_control-label">{$lang->stkr_check}</label>
+			<div class="x_controls">
+				<label class="x_inline" for="check_modify_allow">
+				<input type="radio" id="check_modify_allow" name="check_modify" value="Y" checked="checked"|cond="$config->check_modify == 'Y'">{$lang->allow}</label>
+
+				<label class="x_inline" for="check_modify_not_allow">
+				<input type="radio" id="check_modify_not_allow" name="check_modify" value="N" checked="checked"|cond="$config->check_modify == 'N'">{$lang->not_allow}</label>
+				<a href="#check_modify_help" class="x_icon-question-sign" data-toggle="#check_modify_help">{$lang->help}</a>
+				<p id="check_modify_help" class="x_help-block" hidden="hidden">{$lang->cmd_check_modify}</p>
+			</div>
+		</div>
+
+		<div class="x_control-group">
+			<label class="x_control-label">{$lang->stkr_pause}</label>
+			<div class="x_controls">
+				<label class="x_inline" for="pause_modify_allow">
+				<input type="radio" id="pause_modify_allow" name="pause_modify" value="Y" checked="checked"|cond="$config->pause_modify == 'Y'">{$lang->allow}</label>
+
+				<label class="x_inline" for="pause_modify_not_allow">
+				<input type="radio" id="pause_modify_not_allow" name="pause_modify" value="N" checked="checked"|cond="$config->pause_modify == 'N'">{$lang->not_allow}</label>
+				<a href="#pause_modify_help" class="x_icon-question-sign" data-toggle="#pause_modify_help">{$lang->help}</a>
+				<p id="pause_modify_help" class="x_help-block" hidden="hidden">{$lang->cmd_pause_modify}</p>
+			</div>
+		</div>
+
+		<div class="x_control-group">
+			<label for="limit_modify_buy" class="x_control-label">{$lang->stkr_for_bought_count}</label>
+			<div class="x_controls">
+				<label class="x_inline" for="limit_modify_buy">
+				<input type="number" value="{$config->limit_modify_buy}" name="limit_modify_buy" id="limit_modify_buy" style="width:50px;"><span style="margin:0 0 0 5px">개 이상시 수정금지 </span></label>
+				<a href="#cmd_limit_modify_buy_help" class="x_icon-question-sign" data-toggle="#cmd_limit_modify_buy_help">{$lang->help}</a>
+				<p id="cmd_limit_modify_buy_help" class="x_help-block" hidden="hidden">{$lang->cmd_limit_modify_buy}</p>
+			</div>
+		</div>
+
+
+	</section>
+
+
+	<section class="section">
+		<h1>{$lang->stkr_sticker_delete}<button type="button" class="snToggle x_icon-chevron-up">Toggle this section</button></h1>
+		<div class="x_control-group">
+			<label class="x_control-label">{$lang->stkr_public}</label>
+			<div class="x_controls">
+				<label class="x_inline" for="public_delete_allow">
+				<input type="radio" id="public_delete_allow" name="public_delete" value="Y" checked="checked"|cond="$config->public_delete == 'Y'">{$lang->allow}</label>
+
+				<label class="x_inline" for="public_delete_not_allow">
+				<input type="radio" id="public_delete_not_allow" name="public_delete" value="N" checked="checked"|cond="$config->public_delete == 'N'">{$lang->not_allow}</label>
+				<a href="#public_delete_help" class="x_icon-question-sign" data-toggle="#public_delete_help">{$lang->help}</a>
+				<p id="public_delete_help" class="x_help-block" hidden="hidden">{$lang->cmd_public_delete}</p>
+			</div>
+		</div>
+
+		<div class="x_control-group">
+			<label class="x_control-label">{$lang->stkr_check}</label>
+			<div class="x_controls">
+				<label class="x_inline" for="check_delete_allow">
+				<input type="radio" id="check_delete_allow" name="check_delete" value="Y" checked="checked"|cond="$config->check_delete == 'Y'">{$lang->allow}</label>
+
+				<label class="x_inline" for="check_delete_not_allow">
+				<input type="radio" id="check_delete_not_allow" name="check_delete" value="N" checked="checked"|cond="$config->check_delete == 'N'">{$lang->not_allow}</label>
+				<a href="#check_delete_help" class="x_icon-question-sign" data-toggle="#check_delete_help">{$lang->help}</a>
+				<p id="check_delete_help" class="x_help-block" hidden="hidden">{$lang->cmd_check_delete}</p>
+			</div>
+		</div>
+
+		<div class="x_control-group">
+			<label class="x_control-label">{$lang->stkr_pause}</label>
+			<div class="x_controls">
+				<label class="x_inline" for="pause_delete_allow">
+				<input type="radio" id="pause_delete_allow" name="pause_delete" value="Y" checked="checked"|cond="$config->pause_delete == 'Y'">{$lang->allow}</label>
+
+				<label class="x_inline" for="pause_delete_not_allow">
+				<input type="radio" id="pause_delete_not_allow" name="pause_delete" value="N" checked="checked"|cond="$config->pause_delete == 'N'">{$lang->not_allow}</label>
+				<a href="#pause_delete_help" class="x_icon-question-sign" data-toggle="#pause_delete_help">{$lang->help}</a>
+				<p id="pause_delete_help" class="x_help-block" hidden="hidden">{$lang->cmd_pause_delete}</p>
+			</div>
+		</div>
+
+		<div class="x_control-group">
+			<label for="limit_delete_buy" class="x_control-label">{$lang->stkr_for_bought_count}</label>
+			<div class="x_controls">
+				<label class="x_inline" for="limit_delete_buy">
+				<input type="number" value="{$config->limit_delete_buy}" name="limit_delete_buy" id="limit_delete_buy" style="width:50px;"><span style="margin:0 0 0 5px">개 이상시 삭제금지 </span></label>
+				<a href="#cmd_limit_delete_buy_help" class="x_icon-question-sign" data-toggle="#cmd_limit_delete_buy_help">{$lang->help}</a>
+				<p id="cmd_limit_delete_buy_help" class="x_help-block" hidden="hidden">{$lang->cmd_limit_delete_buy}</p>
+			</div>
+		</div>
+
+	</section>
+
+	<section class="section">
+		<h1>{$lang->cmd_file}<button type="button" class="snToggle x_icon-chevron-up">Toggle this section</button></h1>
+		<div class="x_control-group">
+			<label class="x_control-label">{$lang->stkr_resizing}</label>
+			<div class="x_controls">
+				<label class="x_inline" for="resizing_use">
+				<input type="radio" id="resizing_use" name="resizing" value="Y" checked="checked"|cond="$config->resizing == 'Y'">{$lang->use}</label>
+
+				<label class="x_inline" for="resizing_not_use">
+				<input type="radio" id="resizing_not_use" name="resizing" value="N" checked="checked"|cond="$config->resizing == 'N'">{$lang->not_use}</label>
+				<a href="#resizing_help" class="x_icon-question-sign" data-toggle="#resizing_help">{$lang->help}</a>
+				<p id="resizing_help" class="x_help-block" hidden="hidden">{$lang->cmd_resizing}</p>
+			</div>
+		</div>
+
+
+		<div class="x_control-group">
+			<label for="max_px" class="x_control-label">{$lang->stkr_max_px}</label>
+			<div class="x_controls">
+				<label class="x_inline" for="max_px">
+				<input type="number" value="{$config->maxPx}" name="maxPx" id="max_px" style="width:70px;"><span style="margin:0 0 0 15px">px  </span></label>
+				<a href="#max_px_help" class="x_icon-question-sign" data-toggle="#max_px_help">{$lang->help}</a>
+				<p id="max_px_help" class="x_help-block" hidden="hidden">{$lang->cmd_max_px}</p>
+			</div>
+		</div>
+
+		<div class="x_control-group">
+			<label class="x_control-label">{$lang->stkr_gifResizingIf}</label>
+			<div class="x_controls">
+				<label class="x_inline" for="gifResizingIf_use">
+				<input type="radio" id="gifResizingIf_use" name="gifResizingIf" value="Y" checked="checked"|cond="$config->gifResizingIf == 'Y'">{$lang->use}</label>
+
+				<label class="x_inline" for="gifResizingIf_not_use">
+				<input type="radio" id="gifResizingIf_not_use" name="gifResizingIf" value="N" checked="checked"|cond="$config->gifResizingIf == 'N'">{$lang->not_use}</label>
+				<a href="#gifResizingIf_help" class="x_icon-question-sign" data-toggle="#gifResizingIf_help">{$lang->help}</a>
+				<p id="gifResizingIf_help" class="x_help-block" hidden="hidden">{$lang->cmd_gifResizingIf}</p>
+			</div>
+		</div>
+
+		<div class="x_control-group" style="display:none;">
+			<label class="x_control-label">{$lang->stkr_target_width}</label>
+			<div class="x_controls">
+				<label class="x_inline" for="target_width_LWOH">
+				<input type="radio" id="target_width_LWOH" name="target_width" value="Y" checked="checked"|cond="$config->target_width == 'Y'">{$lang->stkr_target_width_LWOH}</label>
+
+				<label class="x_inline" for="target_width_W">
+				<input type="radio" id="target_width_W" name="target_width" value="N" checked="checked"|cond="$config->target_width == 'N'">{$lang->stkr_target_width_LW}</label>
+				<a href="#target_width_help" class="x_icon-question-sign" data-toggle="#target_width_help">{$lang->help}</a>
+				<p id="target_width_help" class="x_help-block" hidden="hidden">{$lang->cmd_target_width}</p>
+			</div>
+		</div>
+
+		<div class="x_control-group" style="display:none;">
+			<label for="image_quality" class="x_control-label">{$lang->stkr_image_quality}</label>
+			<div class="x_controls">
+				<label class="x_inline" for="image_quality">
+				<input type="number" value="{$config->image_quality}" name="image_quality" id="image_quality" style="width:70px;"><span style="margin:0 0 0 15px">%  </span></label>
+				<a href="#image_quality_help" class="x_icon-question-sign" data-toggle="#image_quality_help">{$lang->help}</a>
+				<p id="image_quality_help" class="x_help-block" hidden="hidden">{$lang->cmd_image_quality}</p>
+			</div>
+		</div>
+
+		<div class="x_control-group">
+			<label class="x_control-label">{$lang->stkr_limit_file}</label>
+			<div class="x_controls">
+				<label class="x_inline" for="min_uploads">
+				{$lang->cmd_min} : 
+				<input type="number" value="{$config->minUploads}" name="minUploads" id="min_uploads"></label>
+				<label class="x_inline" for="max_uploads">
+				{$lang->cmd_max} : 
+				<input type="number" value="{$config->maxUploads}" name="maxUploads" id="max_uploads"></label>
+				<a href="#limit_file_help" class="x_icon-question-sign" data-toggle="#limit_file_help">{$lang->help}</a>
+				<p id="limit_file_help" class="x_help-block" hidden="hidden">{$lang->cmd_limit_file}</p>
+			</div>
+		</div>
+
+		<div class="x_control-group">
+			<label class="x_control-label">{$lang->stkr_min_size_px}</label>
+			<div class="x_controls">
+				<label class="x_inline" for="image_min_width">
+				{$lang->width} : 
+				<input type="number" value="{$config->image_min_width}" name="image_min_width" id="image_min_width"><span style="margin:0 0 0 7px">px  </span></label>
+				<label class="x_inline" for="image_min_height">
+				{$lang->height} : 
+				<input type="number" value="{$config->image_min_height}" name="image_min_height" id="image_min_height"><span style="margin:0 0 0 7px">px  </span></label>
+				<a href="#min_size_px_help" class="x_icon-question-sign" data-toggle="#min_size_px_help">{$lang->help}</a>
+				<p id="min_size_px_help" class="x_help-block" hidden="hidden">{$lang->cmd_min_size_px}</p>
+			</div>
+		</div>
+
+
+		<div class="x_control-group">
+			<label for="file_size" class="x_control-label">{$lang->stkr_file_size}</label>
+			<div class="x_controls">
+				<label class="x_inline" for="file_size">
+				<input type="number" value="{$config->file_size}" name="file_size" id="file_size" style="width:70px;"><span style="margin:0 0 0 15px">KB  </span></label>
+				<a href="#file_size_help" class="x_icon-question-sign" data-toggle="#file_size_help">{$lang->help}</a>
+				<p id="file_size_help" class="x_help-block" hidden="hidden">{$lang->cmd_file_size}</p>
+			</div>
+		</div>
+
+		<div class="x_control-group">
+			<label for="file_size_all" class="x_control-label">{$lang->stkr_file_size_all}</label>
+			<div class="x_controls">
+				<label class="x_inline" for="file_size_all">
+				<input type="number" value="{$config->file_size_all}" name="file_size_all" id="file_size_all" style="width:70px;"><span style="margin:0 0 0 15px">KB  </span></label>
+				<a href="#file_size_all_help" class="x_icon-question-sign" data-toggle="#file_size_all_help">{$lang->help}</a>
+				<p id="file_size_all_help" class="x_help-block" hidden="hidden">{$lang->cmd_file_size_all}</p>
+			</div>
+		</div>
+
+		<div class="x_control-group">
+			<label for="file_ext" class="x_control-label">{$lang->stkr_file_ext}</label>
+			<div class="x_controls">
+				<input type="text" name="file_ext" disabled="disabled" id="file_ext" value="{$config->file_ext}">
+				<a href="#file_ext_help" class="x_icon-question-sign" data-toggle="#file_ext_help">{$lang->help}</a>
+				<p id="file_ext_help" class="x_help-block" hidden="hidden">{$lang->cmd_file_ext}</p>
+			</div>
+		</div>
+
+
+	</section>
+
+
+	<section class="section">
+		<h1>{$lang->stk_cmd_comment}<button type="button" class="snToggle x_icon-chevron-up">Toggle this section</button></h1>
+
+		<div class="x_control-group">
+			<label class="x_control-label">{$lang->stkr_cmt_allow_modify}</label>
+			<div class="x_controls">
+				<label class="x_inline" for="cmt_allow_modify_allow">
+				<input type="radio" id="cmt_allow_modify_allow" name="cmt_allow_modify" value="Y" checked="checked"|cond="$config->cmt_allow_modify == 'Y'">{$lang->allow}</label>
+
+				<label class="x_inline" for="cmt_allow_modify_not_allow">
+				<input type="radio" id="cmt_allow_modify_not_allow" name="cmt_allow_modify" value="N" checked="checked"|cond="$config->cmt_allow_modify == 'N'">{$lang->not_allow}</label>
+				<a href="#cmt_allow_modify_help" class="x_icon-question-sign" data-toggle="#cmt_allow_modify_help">{$lang->help}</a>
+				<p id="cmt_allow_modify_help" class="x_help-block" hidden="hidden">{$lang->cmd_cmt_allow_modify}</p>
+			</div>
+		</div>
+
+		<div class="x_control-group">
+			<label for="cmt_max_sticker_count" class="x_control-label">{$lang->stkr_cmt_max_sticker_count}</label>
+			<div class="x_controls">
+				<label class="x_inline" for="cmt_max_sticker_count">
+				<input type="number" value="{$config->cmt_max_sticker_count}" name="cmt_max_sticker_count" id="cmt_max_sticker_count" style="width:50px;"></label>
+				<a href="#cmt_max_sticker_count_help" class="x_icon-question-sign" data-toggle="#cmt_max_sticker_count_help">{$lang->help}</a>
+				<p id="cmt_max_sticker_count_help" class="x_help-block" hidden="hidden">{$lang->cmd_cmt_max_sticker_count}</p>
+			</div>
+		</div>
+
+
+
+	</section>
+
+
+
+
+	<div class="x_clearfix btnArea">
+		<span class="x_pull-right"><input class="x_btn x_btn-primary" type="submit" value="{$lang->cmd_save}"></span>
+	</div>
+</form>
+
+<script>
+jQuery(function($){
+
+	$(document).on("click",".x_clearfix.btnArea>.x_pull-right>input",function(e){
+		var buy_limit = $("#buy_limit").val();
+		var minPoint = $("#min_point").val() || 0;
+		var maxPoint = $("#max_point").val() || 0;
+		var maxPx = $("#max_px").val() || 0;
+		var image_quality = $("#image_quality").val() || 0;
+		var min_uploads = $("#min_uploads").val() || 0;
+		var max_uploads = $("#max_uploads").val() || 0;
+		var image_min_width = $("#image_min_width").val() || 0;
+		var image_min_height = $("#image_min_height").val() || 0;
+		var file_size = $("#file_size").val() || 0;
+		var file_size_all = $("#file_size_all").val() || 0;
+		var cmt_max_sticker_count = $("#cmt_max_sticker_count").val() || 0;
+
+		if(buy_limit && buy_limit < 0){
+			return alert('스티커 최대 보유 개수 제한 숫자 형식이 올바르지 않습니다.'), false;
+		}
+
+		if(minPoint < 0 || maxPoint < 0){
+			return alert('포인트 판매 범위는 0 이상이어야 합니다.'), false;
+		}
+
+		if(parseInt(maxPoint)-parseInt(minPoint) < 0){
+			return alert('포인트 판매 범위 최소값이 최댓값 보다 클 수 없습니다.'), false;
+		}
+
+		if(maxPx < 80){
+			return alert('이미지 최대 사이즈 값이 너무 작습니다.'), false;
+		}
+
+		if(image_quality > 100 || image_quality < 1){
+			return alert('이미지 품질 값은 1이상 100이하여야 합니다.'), false;
+		}
+
+		if(min_uploads < 1 || max_uploads < 1){
+			return alert('스티커 업로드 갯수는 1이상이어야 합니다.'), false;
+		}
+
+		if(parseInt(max_uploads)-parseInt(min_uploads) < 0){
+			return alert('스티커 업로드 갯수 범위 최소값이 최댓값 보다 클 수 없습니다.'), false;
+		}
+
+		if(image_min_width < 80 || image_min_height < 80){
+			return alert('이미지 최소 크기 값이 너무 작습니다.'), false;
+		}
+
+		if(file_size < 1 || file_size_all < 1){
+			return alert('파일 용량값이 올바르지 않습니다.'), false;
+		}
+
+		if(cmt_max_sticker_count < 0){
+			return alert('댓글 스티커 등록 제한값이 올바르지 않습니다.'), false;
+		}
+
+	});
+
+});
+
+</script>
+<include target="_bottom.html" />

@@ -1,0 +1,11 @@
+<table name="sticker_files">
+	<column name="sticker_srl" type="number" size="11" notnull="notnull" index="idx_sticker_srl" />
+	<column name="sticker_file_srl" type="number" size="11" notnull="notnull" primary_key="primary_key" />
+	<column name="member_srl" type="number" size="11" notnull="notnull" index="idx_member_srl" />
+	<column name="file_srl" type="number" size="11" notnull="notnull" index="idx_file_srl" />
+	<column name="file_name" type="varchar" size="120" />
+	<column name="used_count" type="number" size="11" default="0" notnull="notnull" index="idx_used_count" />
+	<column name="no" type="number" size="4" notnull="notnull" />
+	<column name="url" type="varchar" size="120" notnull="notnull" />
+	<column name="regdate" notnull="notnull" type="date" index="idx_regdate" />
+</table>

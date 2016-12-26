@@ -1,0 +1,32 @@
+<table name="sticker">
+	<column name="sticker_srl" type="number" size="11" notnull="notnull" primary_key="primary_key" />
+	<column name="member_srl" type="number" size="11" notnull="notnull" index="idx_member_srl" />
+	<column name="nick_name" type="varchar" size="30" notnull="notnull" />
+	<column name="category_srl" type="number" size="11" default="0" notnull="notnull" index="idx_category_srl" />
+
+	<column name="title" type="varchar" size="300" notnull="notnull" />
+	<column name="tag" type="text" />
+
+	<column name="title_bold" type="char" size="1" default="N" notnull="notnull" />
+	<column name="title_color" type="varchar" size="7" />
+	<column name="content" type="bigtext" notnull="notnull" />
+	<column name="extra_vars" type="text" />
+
+	<column name="readed_count" type="number" size="11" default="0" notnull="notnull" index="idx_readed_count" />
+	<column name="bought_count" type="number" size="11" default="0" notnull="notnull" index="idx_bought_count" />
+	<column name="used_count" type="number" size="11" default="0" notnull="notnull" index="idx_used_count" />
+	<column name="uploaded_count" type="number" size="11" default="0" notnull="notnull" index="idx_uploaded_count" />
+
+	<column name="start_date" type="date" index="idx_start_date" />
+	<column name="end_date" type="date" index="idx_end_date" />
+	<column name="price" type="number" notnull="notnull" default="0" size="11" />
+	<column name="buy_limit" type="number" notnull="notnull" default="0" size="11" />
+	<column name="exptime" type="number" size="11" index="idx_exptime" />
+
+	<column name="ipaddress" type="varchar" size="128" notnull="notnull" index="idx_ipaddress" />
+	<column name="last_update" type="date" index="idx_last_update" />
+	<column name="last_updater" type="varchar" size="80" />
+	<column name="list_order" type="number" size="11" notnull="notnull" index="idx_list_order" />
+	<column name="regdate" notnull="notnull" type="date" index="idx_regdate" />
+	<column name="status" type="varchar" size="20" default="PUBLIC" />
+</table>

@@ -1,0 +1,24 @@
+<query id="getStickerList" action="select">
+	<tables>
+		<table name="sticker" />
+	</tables>
+	<columns>
+		<column name="*" />
+	</columns>
+	<conditions>
+		<condition operation="equal" column="status" default="PUBLIC" var="status" pipe="and" />
+		<condition operation="like_prefix" column="regdate" var="s_regdate" pipe="and" />
+        <group pipe="and">
+            <condition operation="like" column="title" var="s_title" />
+            <condition operation="like" column="content" var="s_content" pipe="or" />
+            <condition operation="like" column="nick_name" var="s_nick_name" pipe="or" />
+            <condition operation="like" column="tag" var="s_tag" pipe="or" />
+        </group>
+	</conditions>
+	<navigation>
+		<index var="sort_index" default="sticker.regdate" order="order_type" />
+		<list_count var="list_count" default="20" />
+		<page_count var="page_count" default="10" />
+		<page var="page" default="1" />
+	</navigation>
+</query>

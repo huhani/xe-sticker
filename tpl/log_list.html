@@ -1,0 +1,150 @@
+<include target="_header.html" />
+
+<div cond="$XE_VALIDATOR_MESSAGE && $XE_VALIDATOR_ID == ''" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+	<p>{$XE_VALIDATOR_MESSAGE}</p>
+</div>
+
+
+<form id="fo_list" action="./" method="get">
+	<input type="hidden" name="module" value="sticker" />
+	<input type="hidden" name="page" value="{$page}" />
+	<table id="stickerListTable" class="x_table x_table-striped x_table-hover">
+
+		<caption>
+
+			<a href="{getUrl('', 'module', 'admin', 'act', 'dispStickerAdminLogList')}" class="active"|cond="$search_keyword == ''">전체<block cond="$search_keyword == ''">({number_format($page_navigation->total_count)})</block></a>
+			<i>|</i>
+
+			<a href="{getUrl('search_target', 'type', 'search_keyword', 'buySticker')}" class="active"|cond="$search_target == 'type' && $search_keyword == 'buySticker'">스티커 구매<block cond="$search_target == 'type' && $search_keyword == 'buySticker'">({number_format($page_navigation->total_count)})</block></a>
+			<i>|</i>
+
+			<a href="{getUrl('search_target', 'type', 'search_keyword', 'insertSticker')}" class="active"|cond="$search_target == 'type' && $search_keyword == 'insertSticker'">스티커 등록<block cond="$search_target == 'type' && $search_keyword == 'insertSticker'">({number_format($page_navigation->total_count)})</block></a>
+
+		</caption>
+
+
+		<thead>
+
+			<tr>
+				<th scope="col" class="title">{$lang->title}</th>
+				<th scope="col" class="nowr">{$lang->nick_name}</th>
+				<th scope="col" class="nowr">유형</th>
+				<th scope="col" class="nowr">등록일</th>
+				<th scope="col" class="nowr">{$lang->ipaddress}</th>
+			</tr>
+
+		</thead>
+
+		<tbody>
+
+			<tr loop="$list => $no, $list">
+				<td class="title">
+					<!--@if(trim($list->title))-->
+					<img src="{$list->main_image}" style="width:50px; height:50px; object-fit:cover; margin:0 5px 0 0;">
+					<a href="{getUrl('idx', $list->idx, 'act', 'dispStickerAdminLogInfo')}">{htmlspecialchars(cut_str($list->title, 25))}</a>
+					<!--@else--><a href="{getUrl('idx', $list->idx, 'act', 'dispStickerAdminLogInfo')}">삭제된 스티커입니다.</a>
+					<!--@end--></td>
+				<td class="nowr">
+					<!--@if($list->member_srl)-->
+						<a href="#popup_menu_area" class="member_{$list->member_srl}">{$list->nick_name}</a>
+					<!--@else-->
+						탈퇴한 회원
+					<!--@end-->
+				</td>
+				<td class="nowr">
+					<!--@if($list->type == "insertSticker")-->
+						스티커 등록
+					<!--@elseif($list->type == "updateSticker")-->
+						스티커 수정
+					<!--@elseif($list->type == "deleteSticker")-->
+						스티커 삭제
+					<!--@elseif($list->type == "insertComment")-->
+						스티커 댓글 등록
+					<!--@elseif($list->type == "updateComment")-->
+						스티커 댓글 수정
+					<!--@elseif($list->type == "deleteComment")-->
+						스티커 댓글 삭제
+					<!--@elseif($list->type == "buySticker")-->
+						스티커 구매
+					<!--@elseif($list->type == "deleteBuySticker")-->
+						구매 스티커 삭제
+					<!--@elseif($list->type == "insertStickerAdmin")-->
+						관리자 스티커 등록
+					<!--@elseif($list->type == "updateStickerAdmin")-->
+						관리자 스티커 수정
+					<!--@elseif($list->type == "deleteStickerAdmin")-->
+						관리자 스티커 삭제
+					<!--@elseif($list->type == "buyStickerAdmin")-->
+						관리자 스티커 구매
+					<!--@elseif($list->type == "deleteBuyStickerAdmin")-->
+						관리자 구매 스티커 삭제
+					<!--@else-->
+						예외
+					<!--@end-->
+				</td>
+				<td class="nowr">{zdate($list->regdate,"Y.m.d H:i")}</td>
+				<td class="nowr"><a href="{getUrl('search_target','ipaddress','search_keyword',$list->ipaddress)}">{$list->ipaddress}</a></td>
+
+			</tr>
+
+		</tbody>
+	</table>
+</form>
+
+<form action="./" class="x_pagination x_pull-left" style="margin:0px 0 0 0">
+	<input type="hidden" name="error_return_url" value="" />
+	<input type="hidden" name="module" value="{$module}" />
+	<input type="hidden" name="act" value="{$act}" />
+	<input cond="$search_keyword" type="hidden" name="search_keyword" value="{$search_keyword}" />
+	<input cond="$search_target" type="hidden" name="search_target" value="{$search_target}" />
+	<ul>
+		<li class="x_disabled"|cond="!$page || $page == 1"><a href="{getUrl('page', '')}">&laquo; {$lang->first_page}</a></li>
+		<block cond="$page_navigation->first_page != 1 && $page_navigation->first_page + $page_navigation->page_count > $page_navigation->last_page - 1 && $page_navigation->page_count != $page_navigation->total_page">
+		{@$isGoTo = true}
+		<li>
+			<a href="#goTo" data-toggle title="{$lang->cmd_go_to_page}">&hellip;</a>
+			<span cond="$isGoTo" id="goTo" class="x_input-append">
+				<input type="number" min="1" max="{$page_navigation->last_page}" required name="page" title="{$lang->cmd_go_to_page}" />
+				<button type="submit" class="x_add-on">Go</button>
+			</span>
+		</li>
+		</block>
+
+		<!--@while($page_no = $page_navigation->getNextPage())-->
+		{@$last_page = $page_no;
+			if(!$page) $page = 1;
+		}
+		<li class="x_active"|cond="$page_no == $page"><a href="{getUrl('page', $page_no)}">{$page_no}</a></li>
+		<!--@end-->
+
+		<block cond="$last_page != $page_navigation->last_page && $last_page + 1 != $page_navigation->last_page">
+		{@$isGoTo = true}
+		<li>
+			<a href="#goTo" data-toggle title="{$lang->cmd_go_to_page}">&hellip;</a>
+			<span cond="$isGoTo" id="goTo" class="x_input-append">
+				<input type="number" min="1" max="{$page_navigation->last_page}" required name="page" title="{$lang->cmd_go_to_page}" />
+				<button type="submit" class="x_add-on">Go</button>
+			</span>
+		</li>
+		</block>
+		<li class="x_disabled"|cond="$page == $page_navigation->last_page"><a href="{getUrl('page', $page_navigation->last_page)}" title="{$page_navigation->last_page}">{$lang->last_page} &raquo;</a></li>
+	</ul>
+</form>
+
+<BR>
+<form action="./" method="get" class="search center x_input-append x_clearfix">
+	<input type="hidden" name="module" value="{$module}" />
+	<input type="hidden" name="act" value="{$act}" />
+	<input type="hidden" name="error_return_url" value="" />
+	<select name="search_target" title="{$lang->search_target}" style="margin-right:4px">
+		<option value="sticker_srl" selected="selected"|cond="$search_target == 'sticker_srl'">스티커 번호</option>
+		<option value="member_srl" selected="selected"|cond="$search_target == 'member_srl'">회원 번호</option>
+		<option value="type" selected="selected"|cond="$search_target == 'type'">유형</option>
+		<option value="ipaddress" selected="selected"|cond="$search_target == 'ipaddress'">IP주소</option>
+		<option value="regdate" selected="selected"|cond="$search_target == 'regdate'">등록일</option>
+	</select>
+	<input type="search" name="search_keyword" value="{htmlspecialchars($search_keyword, ENT_COMPAT | ENT_HTML401, 'UTF-8', false)}" title="{$lang->cmd_search}" />
+	<button type="submit" class="x_btn x_btn-inverse">{$lang->cmd_search}</button>
+	<a href="{getUrl('','module',$module,'act',$act)}" class="x_btn">{$lang->cmd_cancel}</a>
+</form>
+

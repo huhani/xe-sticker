@@ -1,0 +1,123 @@
+<!--// HEADER -->
+<load target="../../../common/js/plugins/ui/jquery-ui.min.css" />
+<load target="../../../common/js/plugins/ui/jquery-ui.js" />
+
+<include target="_header.html" />
+
+<!--TODO-->
+<div cond="$XE_VALIDATOR_MESSAGE && $XE_VALIDATOR_ID == ''" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+	<p>{$XE_VALIDATOR_MESSAGE}</p>
+</div>
+
+<h2>구매 정보</h2>
+
+<form action="./" method="post" style="margin:0 0 25px 0;">
+<input type="hidden" name="module" value="{$module}">
+<input type="hidden" name="act" value="procStickerAdminBuyUpdate">
+<input type="hidden" name="idx" value="{$oBuyInfo->idx}">
+
+<table class="x_table x_table-striped x_table-hover" style="margin:0 0 15px 0;">
+<colgroup><col width="120">
+</colgroup><tbody><tr>
+<th scope="col" class="nowr">구매자 닉네임</th>
+<td><a href="#popup_menu_area" class="member_{$oBuyInfo->member_srl}" onclick="return false">{$oBuyInfo->nick_name}</a>
+</td>
+</tr>
+<tr>
+	<th scope="col" class="nowr">스티커 번호</th>
+	<td><span>{$oBuyInfo->sticker_srl}</span></td>
+</tr>
+<tr>
+	<th scope="col" class="nowr">스티커 제목</th>
+	<td><img src="{$oSticker->main_image}" style="width:50px; height:50px; object-fit:cover; margin:0 5px 0 0;">
+		<a href="{getUrl('','mid', 'sticker', 'sticker_srl', $oSticker->sticker_srl)}" target="_blank"><span>{$oSticker->title}</span></a></td>
+</tr>
+<tr>
+	<th scope="col" class="nowr">IP 주소</th>
+	<td>{$oBuyInfo->ipaddress}</td>
+</tr>
+<tr>
+	<th scope="col" class="nowr">구매일</th>
+	<td>
+		<span>{zdate($oBuyInfo->regdate, 'Y-m-d H:i:s')}</span>
+	</td>
+</tr>
+<tr>
+	<th scope="col" class="nowr">만료일</th>
+	<td>
+		<input type="hidden" name="expdate" id="expdate" value="{$oBuyInfo->expdate ? zdate($oBuyInfo->expdate, 'Ymd') : ''}" />
+		<input type="text" readonly placeholder="YYYY-MM-DD" class="inputDate" id="expdate_e" value="{$oBuyInfo->expdate ? zdate($oBuyInfo->expdate, 'Y-m-d') : ''}" />
+		<input type="button" value="삭제" class="x_btn dateRemover" />
+
+		<div style="margin: 10px 0 0 0">
+			<label class="x_inline" for="expdate_hour">
+			<input type="number" value="{$oBuyInfo->expdate ? zdate($oBuyInfo->expdate, 'H') : '23'}" name="expdate_hour" id="expdate_hour"> 시</label>
+
+			<label class="x_inline" for="expdate_minute">
+			<input type="number" value="{$oBuyInfo->expdate ? zdate($oBuyInfo->expdate, 'i') : '59'}" name="expdate_minute" id="expdate_minute"> 분</label>
+
+			<label class="x_inline" for="expdate_second">
+			<input type="number" value="{$oBuyInfo->expdate ? zdate($oBuyInfo->expdate, 's') : '59'}" name="expdate_second" id="expdate_second"> 초</label>
+		</div>
+		<!--@if($oBuyInfo->expdate)-->
+			{zdate($oBuyInfo->expdate, 'Y-m-d H:i:s')}
+		<!--@else-->
+			만료일이 설정되지 않았습니다.
+		<!--@end-->
+	</td>
+</tr>
+<tr>
+	<th scope="col" class="nowr">사용 포인트</th>
+	<td>
+		<input type="number" value="{$oBuyInfo->use_point}" name="use_point" id="use_point" style="width:70px;">
+	</td>
+</tr>
+<tr>
+	<th scope="col" class="nowr">사용 수</th>
+	<td>
+		<input type="number" value="{$oBuyInfo->used_count}" name="used_count" id="used_count" style="width:70px;">
+		<label class="x_inline" for="used_count_e" style="margin: 0 0 0 4px;">
+			수정
+			<input type="checkbox" value="Y" id="used_count_e" name="used_count_e">
+		</label>
+	</td>
+</tr>
+<tr>
+	<th scope="col" class="nowr">상태</th>
+{@
+	$oBuyInfo->expdate = intval($oBuyInfo->expdate);
+}
+	<td>
+		{!$oBuyInfo->expdate || ($oBuyInfo->expdate && $date < $oBuyInfo->expdate) ? "유효" : "만료"}
+	</td>
+</tr>
+
+</tbody>
+</table>
+
+<div class="x_pull-left">
+	<button class="x_btn" type="button" onclick="history.go(-1)">목록</button>
+</div>
+<div class="x_pull-right">
+	<button type="submit" name="act" class="x_btn" value="procStickerAdminBuyDelete">삭제</button>
+	<button type="submit" class="x_btn x_btn-primary" style="width:120px;" value="false">수정</button>
+</div>
+
+</form>
+
+<script>
+(function($){
+	$(function(){
+		var option = { changeMonth: true, changeYear: true, gotoCurrent: false,yearRange:'-100:+10', dateFormat:'yy-mm-dd', onSelect:function(){
+			$(this).prev('input[type="hidden"]').val(this.value.replace(/-/g,""))}
+		};
+		$.extend(option,$.datepicker.regional['{$lang_type}']);
+		$(".inputDate").datepicker(option);
+		$(".dateRemover").click(function() {
+			$(this).prevAll('input').val('');
+			$(this).parent().find('div input').val('0');
+			return false;
+		});
+    });
+})(jQuery);
+</script>

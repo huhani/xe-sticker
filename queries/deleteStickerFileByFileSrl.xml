@@ -1,0 +1,9 @@
+<query id="deleteStickerFileByFileSrl" action="delete">
+    <tables>
+        <table name="sticker_files" />
+    </tables>
+    <conditions>
+        <condition operation="equal" column="sticker_srl" var="sticker_srl" filter="number" notnull="notnull" />
+        <condition operation="equal" column="file_srl" var="file_srl" filter="number" notnull="notnull" pipe="and" />
+    </conditions>
+</query>

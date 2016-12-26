@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>file.not.found.or.access.denied.%cp_filename%</source>
+                <target>文件 %cp_filename% 无法访问，文件无法找到或您没有权限打开此文件。</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>php.setting.disabled.%setting%</source>
+                <target>PHP 选项 %setting% 还未开启。</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>network.resource.not.accessible.%cp_url%</source>
+                <target>网络资源 %cp_url% 无法访问，请确认网络路径正确。</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>network.resource.exceeds.size.limit.%limit%</source>
+                <target>网络资源超过服务器限定大小 %limit%。</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>file.read.error</source>
+                <target>文件读取错误。</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>network.stream.read.timeout.%timeout%</source>
+                <target>网络资源读取超时 %timeout%。</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

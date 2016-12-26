@@ -1,0 +1,11 @@
+<query id="getStickerBuyCount" action="select">
+	<tables>
+		<table name="sticker_buy" />
+	</tables>
+	<columns>
+      <column name="count(*)" alias="count" />
+	</columns>
+	<conditions>
+		<condition operation="equal" column="member_srl" var="member_srl" />
+	</conditions>
+</query>

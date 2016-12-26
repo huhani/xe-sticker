@@ -1,0 +1,11 @@
+<query id="getStickerBuyByIdx" action="select">
+	<tables>
+		<table name="sticker_buy" />
+	</tables>
+	<columns>
+      <column name="*" />
+	</columns>
+	<conditions>
+		<condition operation="equal" column="idx" var="idx" notnull="notnull" />
+	</conditions>
+</query>

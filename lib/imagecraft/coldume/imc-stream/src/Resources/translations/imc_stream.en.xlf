@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>file.not.found.or.access.denied.%cp_filename%</source>
+                <target>The file %cp_filename% was not found or could not be accessed.</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>php.setting.disabled.%setting%</source>
+                <target>The PHP %setting% setting is disabled.</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>network.resource.not.accessible.%cp_url%</source>
+                <target>The network resource %cp_url% is not accessible.</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>network.resource.exceeds.size.limit.%limit%</source>
+                <target>The network resource exceeds the allowalbe size limit %limit%.</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>file.read.error</source>
+                <target>An error occured while reading the file.</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>network.stream.read.timeout.%timeout%</source>
+                <target>The timeout period %timeout% elapsed prior to completion of fetching network resource.</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

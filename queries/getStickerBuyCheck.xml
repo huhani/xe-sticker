@@ -1,0 +1,16 @@
+<query id="getStickerBuyCheck" action="select">
+	<tables>
+		<table name="sticker_buy" />
+	</tables>
+	<columns>
+      <column name="count(*)" alias="count" />
+	</columns>
+	<conditions>
+		<condition operation="equal" column="member_srl" var="member_srl" />
+		<condition operation="equal" column="sticker_srl" var="sticker_srl" pipe="and" />
+		<group pipe="and">
+			<condition operation="null" column="expdate" pipe="or" />
+			<condition operation="more" column="expdate" var="date" pipe="or" />
+		</group>
+	</conditions>
+</query>

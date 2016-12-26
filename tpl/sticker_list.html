@@ -1,0 +1,155 @@
+<include target="_header.html" />
+
+<div cond="$XE_VALIDATOR_MESSAGE && $XE_VALIDATOR_ID == ''" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+	<p>{$XE_VALIDATOR_MESSAGE}</p>
+</div>
+
+
+<form id="fo_list" action="./" method="get">
+	<input type="hidden" name="module" value="sticker" />
+	<input type="hidden" name="page" value="{$page}" />
+	<table id="stickerListTable" class="x_table x_table-striped x_table-hover">
+
+		<caption>
+
+			<a href="{getUrl('', 'module', 'admin', 'act', 'dispStickerAdminStickerList')}" class="active"|cond="$search_keyword == ''">{$lang->all}<block cond="$search_keyword == ''">({number_format($page_navigation->total_count)})</block></a>
+			<i>|</i>
+
+			<a href="{getUrl('search_target', 'status', 'search_keyword', 'PUBLIC')}" class="active"|cond="$search_target == 'status' && $search_keyword == 'PUBLIC'">공개<block cond="$search_target == 'status' && $search_keyword == 'PUBLIC'">({number_format($page_navigation->total_count)})</block></a>
+			<i>|</i>
+
+			<a href="{getUrl('search_target', 'status', 'search_keyword', 'CHECK')}" class="active"|cond="$search_target == 'status' && $search_keyword == 'CHECK'">검토<block cond="$search_target == 'status' && $search_keyword == 'CHECK'">({number_format($page_navigation->total_count)})</block></a>
+			<i>|</i>
+
+			<a href="{getUrl('search_target', 'status', 'search_keyword', 'PAUSE')}" class="active"|cond="$search_target == 'status' && $search_keyword == 'PAUSE'">판매 중단<block cond="$search_target == 'status' && $search_keyword == 'PAUSE'">({number_format($page_navigation->total_count)})</block></a>
+			<i>|</i>
+
+			<a href="{getUrl('search_target', 'status', 'search_keyword', 'STOP')}" class="active"|cond="$search_target == 'status' && $search_keyword == 'STOP'">정지<block cond="$search_target == 'status' && $search_keyword == 'STOP'">({number_format($page_navigation->total_count)})</block></a>
+
+			<div class="x_pull-right">
+				<a href="{getUrl('search_target', 'status', 'search_keyword', 'READY')}" class="active"|cond="$search_target == 'status' && $search_keyword == 'READY'">대기<block cond="$search_target == 'status' && $search_keyword == 'READY'">({number_format($page_navigation->total_count)})</block></a>
+				<i style="color:#ccc; font-style:normal;"> | </i>
+
+				<a href="{getUrl('search_target', 'status', 'search_keyword', 'EXPIRED')}" class="active"|cond="$search_target == 'status' && $search_keyword == 'EXPIRED'">만료<block cond="$search_target == 'status' && $search_keyword == 'EXPIRED'">({number_format($page_navigation->total_count)})</block></a>
+			</div>
+
+		</caption>
+
+
+		<thead>
+
+			<tr>
+				<th scope="col" class="title">{$lang->title}</th>
+				<th scope="col" class="nowr">{$lang->writer}</th>
+				<th scope="col" class="nowr">{$lang->readed_count}</th>
+				<th scope="col" class="nowr">구매 수</th>
+				<th scope="col" class="nowr">사용 수</th>
+				<th scope="col" class="nowr">{$lang->date}</th>
+<!--@if($search_target == "status" && $search_keyword == "READY")-->
+				<th scope="col" class="nowr">판매 시작일</th>
+<!--@endif-->
+<!--@if($search_target == "status" && $search_keyword == "EXPIRED")-->
+				<th scope="col" class="nowr">판매 종료일</th>
+<!--@endif-->
+				<th scope="col" class="nowr">{$lang->ipaddress}</th>
+				<th scope="col" class="nowr">{$lang->status}</th>
+			</tr>
+
+		</thead>
+
+		<tbody>
+
+			<tr loop="$list => $no, $oSticker">
+				<td class="title">
+					<img src="{$oSticker->main_image}" style="width:50px; height:50px; object-fit:cover; margin:0 5px 0 0;">
+					<a href="{getUrl('sticker_srl', $oSticker->sticker_srl, 'act', 'dispStickerAdminStickerView')}"><!--@if(trim($oSticker->title))-->{htmlspecialchars(cut_str($oSticker->title, 25))}<!--@else--><em>스티커가 없습니다.</em><!--@end--></a></td>
+				<td class="nowr"><a href="#popup_menu_area" class="member_{$oSticker->member_srl}">{$oSticker->nick_name}</a></td>
+				<td class="nowr">{$oSticker->readed_count}</td>
+				<td class="nowr">{$oSticker->bought_count}</td>
+				<td class="nowr">{$oSticker->used_count}</td>
+				<td class="nowr">{zdate($oSticker->regdate,"Y.m.d H:i")}</td>
+<!--@if($search_target == "status" && $search_keyword == "READY")-->
+				<td class="nowr">{$oSticker->start_date ? zdate($oSticker->start_date,"Y.m.d H:i") : "없음"}</td>
+<!--@endif-->
+<!--@if($search_target == "status" && $search_keyword == "EXPIRED")-->
+				<td class="nowr">{$oSticker->end_date ? zdate($oSticker->end_date,"Y.m.d H:i") : "없음"}</td>
+<!--@endif-->
+				<td class="nowr"><a href="{getUrl('search_target','ipaddress','search_keyword',$oSticker->ipaddress)}">{$oSticker->ipaddress}</a></td>
+				<td class="nowr">
+					<!--@if($oSticker->status == 'PUBLIC')-->
+						공개
+					<!--@elseif($oSticker->status == 'CHECK')-->
+						검토
+					<!--@elseif($oSticker->status == 'PAUSE')-->
+						판매 중단
+					<!--@elseif($oSticker->status == 'STOP')-->
+						정지
+					<!--@else-->
+						unknown
+					<!--@end-->
+				</td>
+			</tr>
+
+		</tbody>
+	</table>
+</form>
+
+<form action="./" class="x_pagination x_pull-left" style="margin:0px 0 0 0">
+	<input type="hidden" name="error_return_url" value="" />
+	<input type="hidden" name="module" value="{$module}" />
+	<input type="hidden" name="act" value="{$act}" />
+	<input cond="$search_keyword" type="hidden" name="search_keyword" value="{$search_keyword}" />
+	<input cond="$search_target" type="hidden" name="search_target" value="{$search_target}" />
+	<ul>
+		<li class="x_disabled"|cond="!$page || $page == 1"><a href="{getUrl('page', '')}">&laquo; {$lang->first_page}</a></li>
+		<block cond="$page_navigation->first_page != 1 && $page_navigation->first_page + $page_navigation->page_count > $page_navigation->last_page - 1 && $page_navigation->page_count != $page_navigation->total_page">
+		{@$isGoTo = true}
+		<li>
+			<a href="#goTo" data-toggle title="{$lang->cmd_go_to_page}">&hellip;</a>
+			<span cond="$isGoTo" id="goTo" class="x_input-append">
+				<input type="number" min="1" max="{$page_navigation->last_page}" required name="page" title="{$lang->cmd_go_to_page}" />
+				<button type="submit" class="x_add-on">Go</button>
+			</span>
+		</li>
+		</block>
+
+		<!--@while($page_no = $page_navigation->getNextPage())-->
+		{@$last_page = $page_no;
+			if(!$page) $page = 1;
+		}
+		<li class="x_active"|cond="$page_no == $page"><a href="{getUrl('page', $page_no)}">{$page_no}</a></li>
+		<!--@end-->
+
+		<block cond="$last_page != $page_navigation->last_page && $last_page + 1 != $page_navigation->last_page">
+		{@$isGoTo = true}
+		<li>
+			<a href="#goTo" data-toggle title="{$lang->cmd_go_to_page}">&hellip;</a>
+			<span cond="$isGoTo" id="goTo" class="x_input-append">
+				<input type="number" min="1" max="{$page_navigation->last_page}" required name="page" title="{$lang->cmd_go_to_page}" />
+				<button type="submit" class="x_add-on">Go</button>
+			</span>
+		</li>
+		</block>
+		<li class="x_disabled"|cond="$page == $page_navigation->last_page"><a href="{getUrl('page', $page_navigation->last_page)}" title="{$page_navigation->last_page}">{$lang->last_page} &raquo;</a></li>
+	</ul>
+</form>
+
+<BR>
+<form action="./" method="get" class="search center x_input-append x_clearfix">
+	<input type="hidden" name="module" value="{$module}" />
+	<input type="hidden" name="act" value="{$act}" />
+	<input type="hidden" name="error_return_url" value="" />
+	<select name="search_target" title="{$lang->search_target}" style="margin-right:4px">
+		<option value="title" selected="selected"|cond="$search_target == 'title'">제목</option>
+		<option value="tag" selected="selected"|cond="$search_target == 'tag'">태그</option>
+		<option value="nick_name" selected="selected"|cond="$search_target == 'nick_name'">닉네임</option>
+		<option value="member_srl" selected="selected"|cond="$search_target == 'member_srl'">회원 번호</option>
+		<option value="ipaddress" selected="selected"|cond="$search_target == 'ipaddress'">IP주소</option>
+		<option value="regdate" selected="selected"|cond="$search_target == 'regdate'">등록일</option>
+		<option value="status" selected="selected"|cond="$search_target == 'status'">상태</option>
+	</select>
+	<input type="search" name="search_keyword" value="{htmlspecialchars($search_keyword, ENT_COMPAT | ENT_HTML401, 'UTF-8', false)}" title="{$lang->cmd_search}" />
+	<button type="submit" class="x_btn x_btn-inverse">{$lang->cmd_search}</button>
+	<a href="{getUrl('','module',$module,'act',$act)}" class="x_btn">{$lang->cmd_cancel}</a>
+</form>
+

@@ -1,0 +1,14 @@
+<query id="getCommentStickerByMemberSrl" action="select">
+	<tables>
+		<table name="comments" />
+	</tables>
+	<columns>
+      <column name="content" />
+      <column name="ipaddress" />
+	</columns>
+	<conditions>
+		<condition operation="equal" column="document_srl" var="document_srl" filter="number" notnull="notnull" />
+		<condition operation="equal" column="member_srl" var="member_srl" pipe="and" filter="number" notnull="notnull" />
+		<condition operation="like" column="content" var="content" pipe="and" />
+	</conditions>
+</query>

@@ -1,0 +1,27 @@
+<query id="getStickerLogs" action="select">
+	<tables>
+		<table name="sticker_log" />
+	</tables>
+	<columns>
+		<column name="*" />
+	</columns>
+	<conditions>
+		<condition operation="equal" column="idx" var="idx" pipe="and" />
+		<condition operation="equal" column="sticker_srl" var="s_sticker_srl" pipe="and" />
+		<condition operation="equal" column="member_srl" var="s_member_srl" pipe="and" />
+		<condition operation="equal" column="type" var="s_type" pipe="and" />
+		<condition operation="equal" column="comment_srl" var="s_comment_srl" pipe="and" />
+		<condition operation="equal" column="document_srl" var="s_document_srl" pipe="and" />
+		<condition operation="like_prefix" column="regdate" var="s_regdate" pipe="and" />
+        <group pipe="and">
+            <condition operation="like" column="content" var="s_content" pipe="or" />
+            <condition operation="like" column="ipaddress" var="s_ipaddress" pipe="or" />
+        </group>
+	</conditions>
+	<navigation>
+		<index var="sort_index" default="regdate" order="order_type" />
+		<list_count var="list_count" default="20" />
+		<page_count var="page_count" default="10" />
+		<page var="page" default="1" />
+	</navigation>
+</query>

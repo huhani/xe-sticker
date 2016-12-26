@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="0.2">
+	<title xml:lang="ko">스티커</title>
+	<description xml:lang="ko">댓글에서 스티커(이모티콘)를 손쉽게 사용하게 해주는 모듈입니다.</description>
+	<version>0.0.0</version>
+	<date>2016-00-00</date>
+	<category>content</category>
+	<author email_address="mmia268@gmail.com" link="http://dnip.co.kr/">
+		<name xml:lang="ko">후하니</name>
+	</author>
+</module>

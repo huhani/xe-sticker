@@ -1,0 +1,16 @@
+<query id="insertBuyStickerInfo" action="insert">
+	<tables>
+		<table name="sticker_buy" />
+	</tables>
+	<columns>
+		<column name="idx" var="idx" notnull="notnull" filter="number" />
+		<column name="member_srl" var="member_srl" notnull="notnull" filter="number" />
+		<column name="sticker_srl" var="sticker_srl" notnull="notnull" filter="number" />
+		<column name="use_point" var="use_point" />
+		<column name="option" var="option" />
+		<column name="expdate" var="expdate" />
+		<column name="ipaddress" notnull="notnull" var="ipaddress" />
+		<column name="list_order" var="list_order" notnull="notnull" filter="number" />
+		<column name="regdate" var="regdate" notnull="notnull" filter="number" />
+	</columns>
+</query>

@@ -1,0 +1,71 @@
+<!--// HEADER -->
+
+<include target="_header.html" />
+
+<!--TODO-->
+<div cond="$XE_VALIDATOR_MESSAGE && $XE_VALIDATOR_ID == ''" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+	<p>{$XE_VALIDATOR_MESSAGE}</p>
+</div>
+
+<h2>로그</h2>
+<table class="x_table x_table-striped x_table-hover" style="margin:0 0 15px 0;">
+<colgroup><col width="120">
+</colgroup><tbody><tr>
+<th scope="col" class="nowr">닉네임</th>
+<td><a href="#popup_menu_area" class="member_{$oLog->member_srl}" onclick="return false">{$oLog->nick_name}</a>
+</td>
+</tr>
+<tr>
+	<th scope="col" class="nowr">스티커 번호</th>
+	<td>
+		<!--@if($oSticker)-->
+		<a href="{getUrl('','mid', 'sticker', 'sticker_srl', $oSticker->sticker_srl)}" target="_blank">{$oSticker->sticker_srl}</a></td>
+		<!--@else-->
+			{$oLog->sticker_srl}
+		<!--@end-->
+</tr>
+<tr cond="$oLog->sticker_file_srl">
+	<th scope="col" class="nowr">스티커 파일 번호</th>
+	<td>{$oLog->sticker_file_srl}</td>
+</tr>
+<tr>
+	<th scope="col" class="nowr">제목</th>
+	<td>{$oSticker ? $oSticker->title : "삭제된 스티커입니다."}</td>
+</tr>
+<tr>
+	<th scope="col" class="nowr">등록일</th>
+	<td>{zdate($oLog->regdate, 'Y-m-d H:i:s')}</td>
+</tr>
+<tr>
+	<th scope="col" class="nowr">IP 주소</th>
+	<td>{$oLog->ipaddress}</td>
+</tr>
+<tr cond="$oLog->comment_srl">
+	<th scope="col" class="nowr">대상 댓글 번호</th>
+	<td>{$oLog->comment_srl}</td>
+</tr>
+<tr cond="$oLog->document_srl">
+	<th scope="col" class="nowr">대상 문서 번호</th>
+	<td>{$oLog->document_srl}</td>
+</tr>
+<tr>
+	<th scope="col" class="nowr">포인트</th>
+	<td>
+		{$oLog->point ? $oLog->point : "없음"}
+	</td>
+</tr>
+<tr cond="$oLog->content">
+	<th scope="col" class="nowr">내용</th>
+	<td>
+		<textarea>
+			htmlspecialchars($oLog->content);
+		</textarea>
+	</td>
+</tr>
+
+</tbody>
+</table>
+
+<div class="x_pull-left">
+	<button class="x_btn" type="button" onclick="history.go(-1)">목록</button>
+</div>

@@ -1,0 +1,18 @@
+<query id="insertStickerLog" action="insert">
+	<tables>
+		<table name="sticker_log" />
+	</tables>
+	<columns>
+		<column name="idx" notnull="notnull" filter="number" var="idx" />
+		<column name="sticker_srl" notnull="notnull" filter="number" var="sticker_srl" />
+		<column name="sticker_file_srl" var="sticker_file_srl" />
+		<column name="member_srl" notnull="notnull" filter="number" var="member_srl" />
+		<column name="type" var="type" maxlength="40" notnull="notnull" />
+		<column name="comment_srl" var="comment_srl" />
+		<column name="document_srl" var="document_srl" />
+		<column name="content" var="content" />
+		<column name="point" var="point" />
+		<column name="ipaddress" notnull="notnull" var="ipaddress" />
+		<column name="regdate" notnull="notnull" filter="number" var="regdate" />
+	</columns>
+</query>

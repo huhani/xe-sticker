@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lang>
+	<item name="sticker">
+		<value xml:lang="ko"><![CDATA[스티커]]></value>
+	</item>
+	<item name="sticker_list">
+		<value xml:lang="ko"><![CDATA[내 스티커]]></value>
+	</item>
+	<item name="sticker_title">
+		<value xml:lang="ko"><![CDATA[제목]]></value>
+	</item>
+	<item name="sticker_delete">
+		<value xml:lang="ko"><![CDATA[삭제]]></value>
+	</item>
+	<item name="sticker_config">
+		<value xml:lang="ko"><![CDATA[설정]]></value>
+	</item>
+
+	<item name="use">
+		<value xml:lang="ko"><![CDATA[사용]]></value>
+	</item>
+	<item name="not_use">
+		<value xml:lang="ko"><![CDATA[사용 안 함]]></value>
+	</item>
+	<item name="allow">
+		<value xml:lang="ko"><![CDATA[허용]]></value>
+	</item>
+	<item name="not_allow">
+		<value xml:lang="ko"><![CDATA[허용 안 함]]></value>
+	</item>
+
+	<item name="width">
+		<value xml:lang="ko"><![CDATA[가로]]></value>
+	</item>
+	<item name="height">
+		<value xml:lang="ko"><![CDATA[세로]]></value>
+	</item>
+
+	<item name="cmd_file">
+		<value xml:lang="ko"><![CDATA[파일]]></value>
+	</item>
+	<item name="stk_cmd_comment">
+		<value xml:lang="ko"><![CDATA[댓글]]></value>
+	</item>
+
+
+	<item name="stkr_default_config">
+		<value xml:lang="ko"><![CDATA[기본 설정]]></value>
+	</item>
+
+	<item name="stkr_sticker_upload">
+		<value xml:lang="ko"><![CDATA[스티커 업로드]]></value>
+	</item>
+
+	<item name="stkr_sticker_modify">
+		<value xml:lang="ko"><![CDATA[스티커 수정]]></value>
+	</item>
+
+	<item name="stkr_sticker_delete">
+		<value xml:lang="ko"><![CDATA[스티커 삭제]]></value>
+	</item>
+
+	<item name="stkr_use_module">
+		<value xml:lang="ko"><![CDATA[모듈 사용]]></value>
+	</item>
+	<item name="cmd_use_module">
+		<value xml:lang="ko"><![CDATA[스티커 모듈을 사용합니다. 사용하지 않을 시 댓글에 등록된 스티커가 표시되지 않습니다.]]></value>
+	</item>
+
+	<item name="stkr_before_test">
+		<value xml:lang="ko"><![CDATA[운영진 심사후 등록]]></value>
+	</item>
+	<item name="cmd_before_test">
+		<value xml:lang="ko"><![CDATA[스티커를 등록 후 운영진이 심사 후 구매가 가능하게 합니다.]]></value>
+	</item>
+
+
+	<item name="stkr_default_sticker">
+		<value xml:lang="ko"><![CDATA[기본 스티커 설정]]></value>
+	</item>
+	<item name="cmd_default_sticker">
+		<value xml:lang="ko"><![CDATA[유저가 구매하지 않아도 사용가능한 스티커를 설정합니다. <BR>sticker srl값을 입력하며, 여러 개일시 "," 로 구분합니다.<BR>최대 5개까지 추가 가능합니다.]]></value>
+	</item>
+
+	<item name="stkr_add_member_menu">
+		<value xml:lang="ko"><![CDATA[회원정보 보기 추가]]></value>
+	</item>
+	<item name="cmd_add_member_menu">
+		<value xml:lang="ko"><![CDATA[회원정보 보기 메뉴에 구매한 스티커 목록 버튼을 추가합니다.]]></value>
+	</item>
+
+	<item name="stkr_limit_file">
+		<value xml:lang="ko"><![CDATA[스티커 업로드 갯수]]></value>
+	</item>
+	<item name="cmd_limit_file">
+		<value xml:lang="ko"><![CDATA[허용할 스티커 업로드 갯수 범위를 입력합니다.]]></value>
+	</item>
+	<item name="cmd_min">
+		<value xml:lang="ko"><![CDATA[최소]]></value>
+	</item>
+	<item name="cmd_max">
+		<value xml:lang="ko"><![CDATA[최대]]></value>
+	</item>
+
+	<item name="stkr_resizing">
+		<value xml:lang="ko"><![CDATA[이미지 리사이징]]></value>
+	</item>
+	<item name="cmd_resizing">
+		<value xml:lang="ko"><![CDATA[업로드 파일에 대해 이미지 리사이징을 적용합니다.]]></value>
+	</item>
+
+	<item name="stkr_max_px">
+		<value xml:lang="ko"><![CDATA[리사이징 크기]]></value>
+	</item>
+	<item name="cmd_max_px">
+		<value xml:lang="ko"><![CDATA[리사이징 크기를 입력합니다. 이미지 리사이징을 사용할 경우 값을 참조 합니다.<BR>GIF 파일의 경우 이미지 해상도의 짧은축/긴축 값이 0.4 이상이고 업로드 파일이 리사이징 크기보다 작을 경우 변환 하지 않습니다.]]></value>
+	</item>
+
+	<item name="stkr_image_quality">
+		<value xml:lang="ko"><![CDATA[이미지 품질]]></value>
+	</item>
+	<item name="cmd_image_quality">
+		<value xml:lang="ko"><![CDATA[100이하의 숫자를 입력합니다. 0에 가까울수록 용량은 작아지나 품질이 떨어집니다. <BR>이미지 리사이징을 사용할 경우 값을 참조 합니다.]]></value>
+	</item>
+
+	<item name="stkr_target_width">
+		<value xml:lang="ko"><![CDATA[최대사이즈 기준축]]></value>
+	</item>
+	<item name="cmd_target_width">
+		<value xml:lang="ko"><![CDATA[가로축기준을 선택한 경우 세로축의 크기에 상관없이 가로축이 크면 축소합니다. <BR>이미지 리사이징을 사용할 경우 값을 참조 합니다.]]></value>
+	</item>
+
+	<item name="stkr_target_width_LWOH">
+		<value xml:lang="ko"><![CDATA[가로세로중 긴 쪽 기준]]></value>
+	</item>
+	<item name="stkr_target_width_LW">
+		<value xml:lang="ko"><![CDATA[가로축 기준]]></value>
+	</item>
+
+	<item name="stkr_file_ext">
+		<value xml:lang="ko"><![CDATA[파일 확장자]]></value>
+	</item>
+	<item name="cmd_file_ext">
+		<value xml:lang="ko"><![CDATA[파일 확장자를 입력합니다. 여러 개일시 "," 로 구분합니다. <BR>대소문자를 구분하지 않습니다.]]></value>
+	</item>
+
+	<item name="stkr_file_size">
+		<value xml:lang="ko"><![CDATA[단일 파일 용량]]></value>
+	</item>
+	<item name="cmd_file_size">
+		<value xml:lang="ko"><![CDATA[단일 파일의 최대 용량을 정합니다.]]></value>
+	</item>
+
+	<item name="stkr_file_size_all">
+		<value xml:lang="ko"><![CDATA[전체 파일 용량]]></value>
+	</item>
+	<item name="cmd_file_size_all">
+		<value xml:lang="ko"><![CDATA[모든 파일의 최대 용량을 정합니다.]]></value>
+	</item>
+
+	<item name="stkr_min_size_px">
+		<value xml:lang="ko"><![CDATA[이미지 최소 크기]]></value>
+	</item>
+	<item name="cmd_min_size_px">
+		<value xml:lang="ko"><![CDATA[이미지의 최소 크기를 설정합니다.]]></value>
+	</item>
+
+	<item name="stkr_cmt_allow_modify">
+		<value xml:lang="ko"><![CDATA[스티커 댓글 수정]]></value>
+	</item>
+	<item name="cmd_cmt_allow_modify">
+		<value xml:lang="ko"><![CDATA['스티커->댓글' 혹은 '댓글->스티커' 수정을 허용합니다.]]></value>
+	</item>
+
+	<item name="stkr_cmt_max_sticker_count">
+		<value xml:lang="ko"><![CDATA[댓글 스티커 등록 제한]]></value>
+	</item>
+	<item name="cmd_cmt_max_sticker_count">
+		<value xml:lang="ko"><![CDATA[1인당 한 문서에 작성할 수 있는 스티커 갯수를 제한합니다. <BR>값이 0일시 제한하지 않습니다.]]></value>
+	</item>
+
+	<item name="stkr_deleted_sticker">
+		<value xml:lang="ko"><![CDATA[삭제된 스티커 표시 HTML]]></value>
+	</item>
+	<item name="cmd_deleted_sticker">
+		<value xml:lang="ko"><![CDATA[댓글에 작성된 스티커가 삭제된 경우 대신 표시할 HTML를 입력합니다.]]></value>
+	</item>
+
+	<item name="stkr_buy_limit">
+		<value xml:lang="ko"><![CDATA[스티커 최대 보유 개수 제한]]></value>
+	</item>
+	<item name="cmd_buy_limit">
+		<value xml:lang="ko"><![CDATA[개인이 최대 보유할 수 있는 스티커 갯수를 제한합니다.<BR>0일시 제한을 설정하지 않습니다.]]></value>
+	</item>
+
+
+	<item name="stkr_limit_point">
+		<value xml:lang="ko"><![CDATA[포인트 판매 범위 설정]]></value>
+	</item>
+	<item name="cmd_limit_point">
+		<value xml:lang="ko"><![CDATA[유저가 판매할 수 있는 포인트 범위를 설정합니다. <BR>최소, 최대값이 같을 경우 값은 고정되며 유저가 임의로 설정이 불가능합니다. <BR>판매가격이 0일 경우 무료로 구매가 가능합니다.]]></value>
+	</item>
+
+	<item name="stkr_return_point">
+		<value xml:lang="ko"><![CDATA[판매자 포인트 지급 설정]]></value>
+	</item>
+	<item name="cmd_return_point">
+		<value xml:lang="ko"><![CDATA[유저가 올린 스티커가 판매가 될 시, 설정한 백분율만큼 해당 판매자에게 포인트를 지급합니다.<BR>0일시 포인트를 지급하지 않습니다. ]]></value>
+	</item>
+
+	<item name="stkr_upload_charge">
+		<value xml:lang="ko"><![CDATA[업로드 수수료]]></value>
+	</item>
+	<item name="cmd_upload_charge">
+		<value xml:lang="ko"><![CDATA[스티커를 업로드 할 때 수수료를 설정합니다.<BR>0일시 업로드 수수료를 설정하지 않습니다. ]]></value>
+	</item>
+
+	<item name="stkr_sale_end_date">
+		<value xml:lang="ko"><![CDATA[기본 판매기간]]></value>
+	</item>
+	<item name="cmd_sale_end_date">
+		<value xml:lang="ko"><![CDATA[기본 판매기간을 설정합니다. <BR>0일시 판매기간을 설정하지 않습니다.]]></value>
+	</item>
+
+	<item name="stkr_use_date">
+		<value xml:lang="ko"><![CDATA[기본 사용시간]]></value>
+	</item>
+	<item name="cmd_use_date">
+		<value xml:lang="ko"><![CDATA[스티커를 구매후 사용시간을 설정합니다. <BR>0일시 사용시간을 설정하지 않습니다.]]></value>
+	</item>
+
+	<item name="stkr_sale_limit">
+		<value xml:lang="ko"><![CDATA[기본 판매수 제한]]></value>
+	</item>
+	<item name="cmd_sale_limit">
+		<value xml:lang="ko"><![CDATA[스티커 판매 수량을 설정합니다. <BR>0일시 제한하지 않습니다.]]></value>
+	</item>
+
+	<item name="stkr_public">
+		<value xml:lang="ko"><![CDATA[공개 상태]]></value>
+	</item>
+	<item name="stkr_check">
+		<value xml:lang="ko"><![CDATA[검토 상태]]></value>
+	</item>
+	<item name="stkr_pause">
+		<value xml:lang="ko"><![CDATA[판매 중단 상태]]></value>
+	</item>
+
+	<item name="cmd_public_modify">
+		<value xml:lang="ko"><![CDATA[공개 상태의 스티커 수정가능 유무를 설정합니다.<BR>이 설정은 파일 수정 및 삭제를 포함합니다.]]></value>
+	</item>
+	<item name="cmd_check_modify">
+		<value xml:lang="ko"><![CDATA[검토 상태의 스티커 수정가능 유무를 설정합니다.<BR>이 설정은 파일 수정 및 삭제를 포함합니다.]]></value>
+	</item>
+	<item name="cmd_pause_modify">
+		<value xml:lang="ko"><![CDATA[판매 중단 상태의 스티커 수정가능 유무를 설정합니다.<BR>이 설정은 파일 수정 및 삭제를 포함합니다.]]></value>
+	</item>
+
+	<item name="cmd_public_delete">
+		<value xml:lang="ko"><![CDATA[공개 상태의 스티커 삭제가능 유무를 설정합니다.]]></value>
+	</item>
+	<item name="cmd_check_delete">
+		<value xml:lang="ko"><![CDATA[검토 상태의 스티커 삭제가능 유무를 설정합니다.]]></value>
+	</item>
+	<item name="cmd_pause_delete">
+		<value xml:lang="ko"><![CDATA[판매 중단 상태의 스티커 삭제가능 유무를 설정합니다.]]></value>
+	</item>
+
+	<item name="stkr_for_bought_count">
+		<value xml:lang="ko"><![CDATA[판매 수에 대해]]></value>
+	</item>
+	<item name="cmd_limit_modify_buy">
+		<value xml:lang="ko"><![CDATA[판매 수가 설정한 값 이상일 경우 수정을 막습니다.<BR>0일 경우 설정하지 않습니다.<BR>이 설정은 파일 수정 및 삭제를 포함합니다.]]></value>
+	</item>
+	<item name="cmd_limit_delete_buy">
+		<value xml:lang="ko"><![CDATA[판매 수가 설정한 값 이상일 경우 삭제를 막습니다.<BR>0일 경우 설정하지 않습니다.]]></value>
+	</item>
+
+	<item name="stkr_browser_title">
+		<value xml:lang="ko"><![CDATA[브라우저 제목]]></value>
+	</item>
+	<item name="cmd_browser_title">
+		<value xml:lang="ko"><![CDATA[/sticker 주소에 대해 브라우저 제목을 설정합니다.]]></value>
+	</item>
+
+	<item name="stkr_gifResizingIf">
+		<value xml:lang="ko"><![CDATA[GIF 리사이징 예외]]></value>
+	</item>
+	<item name="cmd_gifResizingIf">
+		<value xml:lang="ko"><![CDATA[GIF파일 리사이징 후 파일 용량이 오히려 커진 경우 원본 파일을 사용합니다.<BR>이미지 해상도의 짧은축/긴축 값이 0.4 이하일 경우 설정에 관계없이 변환된 파일을 이용합니다.]]></value>
+	</item>
+
+	<item name="cmd_sticker_mypage">
+		<value xml:lang="ko"><![CDATA[보유 스티커]]></value>
+	</item>
+
+	<item name="cmd_view_own_sticker">
+		<value xml:lang="ko"><![CDATA[작성 스티커 보기]]></value>
+	</item>
+
+
+	<item name="stkr_show_delete_sticker">
+		<value xml:lang="ko"><![CDATA[삭제된 스티커 표시]]></value>
+	</item>
+
+</lang>

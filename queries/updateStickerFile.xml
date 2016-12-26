@@ -1,0 +1,16 @@
+<query id="updateStickerFile" action="update">
+    <tables>
+        <table name="sticker_files" />
+    </tables>
+	<columns>
+		<column name="member_srl" var="member_srl" />
+		<column name="file_srl" var="file_srl" />
+		<column name="file_name" var="file_name" />
+		<column name="url" var="url" />
+		<column name="regdate" var="regdate" />
+	</columns>
+    <conditions>
+		<condition operation="equal" column="sticker_srl" var="sticker_srl" />
+		<condition operation="equal" column="sticker_file_srl" var="sticker_file_srl" pipe="and" />
+    </conditions>
+</query>

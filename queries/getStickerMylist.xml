@@ -1,0 +1,24 @@
+<query id="getStickerMylist" action="select">
+	<tables>
+		<table name="sticker" />
+		<table name="sticker_buy" />
+	</tables>
+	<columns>
+		<column name="sticker.title" />
+		<column name="sticker_buy.*" />
+	</columns>
+	<conditions>
+		<condition operation="equal" column="sticker_buy.member_srl" var="member_srl" />
+		<condition operation="equal" column="sticker.sticker_srl" var="sticker_buy.sticker_srl" pipe="and" />
+		<group pipe="and">
+			<condition operation="null" column="sticker_buy.expdate" pipe="or" />
+			<condition operation="more" column="sticker_buy.expdate" var="date" pipe="or" />
+		</group>
+	</conditions>
+	<navigation>
+		<index var="sort_index" default="sticker_buy.list_order" order="order_type" />
+		<list_count var="list_count" default="20" />
+		<page_count var="page_count" default="10" />
+		<page var="page" default="1" />
+	</navigation>
+</query>

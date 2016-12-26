@@ -1,0 +1,11 @@
+<filter name="delete_sticker" module="sticker" act="procStickerDelete">
+	<form>
+		<node target="sticker_srl" filter="number" required="true" />
+	</form>
+	<parameter />
+	<response callback_func="completeDeleteSticker">
+		<tag name="error" />
+		<tag name="message" />
+		<tag name="mid" />
+  </response>
+</filter>

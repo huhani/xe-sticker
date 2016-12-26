@@ -1,0 +1,12 @@
+<query id="getStickerBuyInfo" action="select">
+	<tables>
+		<table name="sticker_buy" />
+	</tables>
+	<columns>
+		<column name="*" />
+	</columns>
+	<conditions>
+		<condition operation="equal" column="member_srl" var="member_srl" notnull="notnull" />
+		<condition operation="equal" column="sticker_srl" var="sticker_srl" notnull="notnull" pipe="and" />
+	</conditions>
+</query>

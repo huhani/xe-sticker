@@ -1,0 +1,26 @@
+<query id="insertSticker" action="insert">
+	<tables>
+		<table name="sticker" />
+	</tables>
+	<columns>
+		<column name="sticker_srl" notnull="notnull" filter="number" var="sticker_srl" />
+		<column name="member_srl" notnull="notnull" filter="number" var="member_srl" />
+		<column name="nick_name" notnull="notnull" var="nick_name" />
+		<column name="category_srl" notnull="notnull" filter="number" default="0" var="category_srl" />
+		<column name="title" var="title" notnull="notnull" minlength="1" maxlength="100" />
+		<column name="tag" var="tag" maxlength="250" />
+		<column name="content" var="content" notnull="notnull" />
+		<column name="uploaded_count" var="uploaded_count" notnull="notnull" />
+		<column name="start_date" filter="number" var="start_date" />
+		<column name="end_date" filter="number" var="end_date" />
+		<column name="price" notnull="notnull" filter="number" var="price" />
+		<column name="buy_limit" filter="number" var="buy_limit" />
+		<column name="exptime" filter="number" var="exptime" />
+		<column name="ipaddress" notnull="notnull" var="ipaddress" />
+		<column name="last_update" var="last_update" />
+		<column name="last_updater" var="last_updater" />
+		<column name="list_order" notnull="notnull" filter="number" var="list_order" />
+		<column name="regdate" notnull="notnull" filter="number" var="regdate" />
+		<column name="status" var="status" />
+	</columns>
+</query>

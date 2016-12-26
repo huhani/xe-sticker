@@ -1,0 +1,13 @@
+<query id="deleteStickerBuyByMemberSrl" action="delete">
+    <tables>
+        <table name="sticker_buy" />
+    </tables>
+    <conditions>
+        <condition operation="equal" column="member_srl" var="member_srl" filter="number" notnull="notnull" />
+        <condition operation="equal" column="sticker_srl" var="sticker_srl" filter="number" notnull="notnull" pipe="and" />
+			<group pipe="and">
+				<condition operation="null" column="expdate" pipe="or" />
+				<condition operation="more" column="expdate" var="date" pipe="or" />
+			</group>
+    </conditions>
+</query>

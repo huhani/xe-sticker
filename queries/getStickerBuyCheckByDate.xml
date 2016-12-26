@@ -1,0 +1,14 @@
+<query id="getStickerBuyCheckByDate" action="select">
+	<tables>
+		<table name="sticker_log" />
+	</tables>
+	<columns>
+      <column name="count(*)" alias="count" />
+	</columns>
+	<conditions>
+		<condition operation="equal" column="member_srl" var="member_srl" notnull="notnull" />
+		<condition operation="equal" column="sticker_srl" var="sticker_srl" notnull="notnull" pipe="and" />
+		<condition operation="in" column="type" var="type" default="buySticker" pipe="and" />
+		<condition operation="equal" column="substr(regdate,1,8)" var="date" notnull="notnull" pipe="and" />
+	</conditions>
+</query>

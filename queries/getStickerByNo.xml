@@ -1,0 +1,12 @@
+<query id="getStickerByNo" action="select">
+	<tables>
+		<table name="sticker_files" />
+	</tables>
+	<columns>
+		<column name="*" />
+	</columns>
+	<conditions>
+		<condition operation="equal" column="sticker_srl" var="sticker_srl" notnull="notnull" />
+		<condition operation="equal" column="no" var="no" notnull="notnull" pipe="and" />
+	</conditions>
+</query>

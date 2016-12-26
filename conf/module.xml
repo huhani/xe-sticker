@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<module>
+	<grants>
+		<grant name="list" default="guest">
+			<title xml:lang="ko">목록</title>
+		</grant>
+		<grant name="view" default="guest">
+			<title xml:lang="ko">열람</title>
+		</grant>
+		<grant name="upload" default="member">
+			<title xml:lang="ko">스티커 등록</title>
+		</grant>
+		<grant name="buy" default="member">
+			<title xml:lang="ko">구매 권한</title>
+		</grant>
+		<grant name="free" default="manager">
+			<title xml:lang="ko">무료 구입</title>
+		</grant>
+	</grants>
+	<permissions />
+    <actions>
+
+        <action name="getCommentStickerList" type="model" />
+        <action name="getStickerElemList" type="model" />
+
+        <action name="dispStickerList" type="view" index="true"/>
+        <action name="dispStickerWrite" type="view" />
+        <action name="dispStickerDelete" type="view" />
+        <action name="dispStickerMylist" type="view" />
+
+        <action name="procStickerInsert" type="controller" />
+        <action name="procStickerCommentInsert" type="controller" />
+        <action name="procStickerDelete" type="controller" />
+        <action name="procStickerFileDelete" type="controller" />
+        <action name="procStickerBuy" type="controller" />
+        <action name="procStickerBuyDelete" type="controller" />
+        <action name="procStickerBuyOrderChange" type="controller" />
+
+        <action name="dispStickerAdminStickerList" type="view" admin_index="true" />
+        <action name="dispStickerAdminStickerView" type="view" />
+        <action name="dispStickerAdminBuyList" type="view" />
+        <action name="dispStickerAdminBuyInfo" type="view" />
+        <action name="dispStickerAdminConfig" type="view" />
+        <action name="dispStickerAdminCategoryInfo" type="view" />
+        <action name="dispStickerAdminGrantInfo" type="view" />
+        <action name="dispStickerAdminLogList" type="view" />
+        <action name="dispStickerAdminLogInfo" type="view" />
+        <action name="dispStickerAdminDesign" type="view" />
+        <action name="dispStickerAdminSkinInfo" type="view" />
+        <action name="dispStickerAdminMobileSkinInfo" type="view" />
+ 
+        <action name="procStickerAdminConfig" type="controller" />
+        <action name="procStickerAdminDesign" type="controller" />
+        <action name="procStickerAdminUpdate" type="controller" />
+        <action name="procStickerAdminDelete" type="controller" />
+        <action name="procStickerAdminBuyUpdate" type="controller" />
+        <action name="procStickerAdminBuyDelete" type="controller" />
+    </actions>
+	<menus>
+		<menu name="sticker" type="all">
+			<title xml:lang="ko">스티커</title>
+		</menu>
+	</menus>
+</module>
