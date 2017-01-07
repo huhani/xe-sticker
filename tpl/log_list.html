@@ -131,8 +131,25 @@
 	</ul>
 </form>
 
+<form class="x_pull-right x_input-append" style="" action="{getUrl('')}" method="post">
+	<input type="hidden" name="error_return_url" value="{getUrl('', 'module', 'admin', 'act', 'dispStickerAdminLogList')}">
+	<input type="hidden" name="mid" value="">
+	<input type="hidden" name="module" value="{$module}">
+	<input type="hidden" name="act" value="procStickerAdminLogClear">
+	<select name="select_date" style="width:170px">
+		<option value="0">모든 기록</option>
+		<option value="1" selected="selected">1일 이상 지난 기록</option>
+		<option value="3">3일 이상 지난 기록</option>
+		<option value="7">7일 이상 지난 기록</option>
+		<option value="15">15일 이상 지난 기록</option>
+		<option value="30">30일 이상 지난 기록</option>
+	</select>
+	<button class="x_btn" type="submit">삭제</button>
+</form>
+
+
 <BR>
-<form action="./" method="get" class="search center x_input-append x_clearfix">
+<form action="./" method="get" style="margin:20px 0 0 0;" class="search center x_input-append x_clearfix">
 	<input type="hidden" name="module" value="{$module}" />
 	<input type="hidden" name="act" value="{$act}" />
 	<input type="hidden" name="error_return_url" value="" />

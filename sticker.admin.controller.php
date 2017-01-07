@@ -257,6 +257,21 @@ class stickerAdminController extends sticker
 
 	}
 
+	function procStickerAdminLogClear(){
+		$select_date = Context::get('select_date');
+		$date = date("YmdHis", mktime(date('H'), date('i'), date('s'), date('m'), date('d') - $select_date, date('Y')));
+
+		$args = new stdClass();
+		$args->date = $date;
+		executeQuery('sticker.deleteStickerLog', $args);
+
+		$this->setMessage('success_deleted');
+		$returnUrl = Context::get('success_return_url') ? Context::get('success_return_url') : getNotEncodedUrl('', 'module', 'admin', 'act', 'dispStickerAdminLogList');
+		$this->setRedirectUrl($returnUrl);
+
+	}
+
+
 }
 
 /* End of file sticker.admin.controller.php */

@@ -1,0 +1,8 @@
+<query id="deleteStickerLog" action="delete">
+    <tables>
+        <table name="sticker_log" />
+    </tables>
+    <conditions>
+        <condition operation="less" column="regdate" var="date" filter="number" />
+    </conditions>
+</query>

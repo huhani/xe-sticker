@@ -55,6 +55,7 @@
         <action name="procStickerAdminDelete" type="controller" />
         <action name="procStickerAdminBuyUpdate" type="controller" />
         <action name="procStickerAdminBuyDelete" type="controller" />
+        <action name="procStickerAdminLogClear" type="controller" />
     </actions>
 	<menus>
 		<menu name="sticker" type="all">
